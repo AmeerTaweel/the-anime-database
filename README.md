@@ -1,18 +1,7 @@
-# the-anime-database
+# TADB - The Anime Database
 
-> A Vue.js project
+> Online database of information about Japanese Anime, made with Vue.js and Bootstrap.
 
-## Build Setup
+## License
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+The Anime Database is distributed under the [MIT License](https://github.com/AmeerTaweel/the-anime-database/blob/master/LICENSE).
