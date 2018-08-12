@@ -1,17 +1,13 @@
 <template>
-    <div id="home" class="m-20">
+    <div id="home">
         <h2>Top Airing Animes</h2>
-        <Carousel
-        :autoplay="carouselSettings.autoplay"
-        :autoplay-speed="carouselSettings.autoplaySpeed"
-        :dots="carouselSettings.dots"
-        :radius-dot="carouselSettings.radiusDot"
-        :trigger="carouselSettings.trigger"
-        :arrow="carouselSettings.arrow">
-            <CarouselItem v-for="(group, gIndex) in getCarouselItems" :key="gIndex">
-                    <img v-for="(topAnime, tIndex) in group" :key="tIndex" :src="topAnime.image_url">
-            </CarouselItem>
-        </Carousel>
+        <div class="row">
+            <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(topAnime, index) in topAiringAnimes" :key="index">
+                <div class="top-anime">
+                    <img :src="topAnime.image_url"/>
+                </div>
+            </div>
+        </div>    
     </div>    
 </template>
 
@@ -21,15 +17,6 @@ export default {
     data(){
         return {
             topAiringAnimes: [],
-            carouselSettings: {
-                autoplay: true,
-                autoplaySpeed: 5000,
-                dots: 'none',
-                radiusDot: false,
-                trigger: 'click',
-                arrow: 'hover'
-            },
-            carouselItemsNum: 5
         }
     },
     methods: {
@@ -46,33 +33,31 @@ export default {
             }
         }
     },
-    computed: {
-        // Devide top airing animes to groups to display in carousel.
-        getCarouselItems(){
-            let animeGroups = []
-            for(let i = 0, g = 0; i < this.topAiringAnimes.length; i++){
-                let group = animeGroups[g]
-                if(group === null || typeof group === `undefined`){
-                    animeGroups.push([])
-                    group = animeGroups[g]
-                }
-                group.push(this.topAiringAnimes[i])
-                if(group.length >= this.carouselItemsNum){
-                    g++
-                }
-            }
-            return animeGroups
-        }
-    },
     created(){
         fetch(`https://api.jikan.moe/top/anime/1/airing`, {
             method: `GET`
         }).then((response) => {
             return response.json()
         }).then((jsonResponse) => {
-            this.topAiringAnimes = jsonResponse.top
+            this.topAiringAnimes = jsonResponse.top.slice(0, 12)
             this.getHigherResolutionAnimePics()
         })
     }
 }
 </script>
+
+<style>
+.top-anime-container{
+    padding: 10px;
+}
+.top-anime{
+    background: black;
+    width: 100%;
+    height: 100%;
+}
+.top-anime > img{
+    width:100%;
+    min-height:100%;
+    object-fit: cover;
+}
+</style>
