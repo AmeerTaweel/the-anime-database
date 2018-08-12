@@ -1,21 +1,26 @@
 <template>
-  <div id="app">
-    <!-- Image and text -->
-    <nav class="navbar navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">
-        <img src="./assets/brand.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
-        TADB - The Anime Database
-      </a>
-    </nav>
+  <div id="app" class="m-20">
+    <h1 class="text-center"><span class="text-primary">T</span>he <span class="text-primary">A</span>nime <span class="text-primary">D</span>atabase</h1>
+    <home></home>
   </div>
 </template>
 
 <script>
+import Home from "./components/home"
 export default {
   name: 'app',
   data () {
     return {
     }
+  },
+  components: {
+    Home
   }
 }
 </script>
+
+<style>
+.m-20 {
+  margin: 20px;
+}
+</style>
