@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <h2>Top Airing Animes</h2>
+        <h2><span class="text-primary">T</span>op <span class="text-primary">A</span>iring <span class="text-primary">A</span>nimes:</h2>
         <div class="row">
             <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(topAnime, index) in topAiringAnimes" :key="index">
                 <div class="top-anime">
