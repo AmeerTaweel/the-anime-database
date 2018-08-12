@@ -23,19 +23,31 @@ export default {
             topAiringAnimes: [],
             carouselSettings: {
                 autoplay: true,
-                autoplaySpeed: 2500,
+                autoplaySpeed: 5000,
                 dots: 'none',
                 radiusDot: false,
                 trigger: 'click',
                 arrow: 'hover'
             },
-            carouselItemsNum: 7
+            carouselItemsNum: 5
         }
     },
     methods: {
-        
+        getHigherResolutionAnimePics(){
+            for(let i = 0; i < this.topAiringAnimes.length; i++){
+                let anime = this.topAiringAnimes[i]
+                fetch(`https://api.jikan.moe/anime/${anime.mal_id}/episodes`, {
+                    method: `GET`
+                }).then((response) => {
+                    return response.json()
+                }).then((json) => {
+                    anime.image_url = json.image_url
+                })
+            }
+        }
     },
     computed: {
+        // Devide top airing animes to groups to display in carousel.
         getCarouselItems(){
             let animeGroups = []
             for(let i = 0, g = 0; i < this.topAiringAnimes.length; i++){
@@ -49,7 +61,6 @@ export default {
                     g++
                 }
             }
-            console.log(animeGroups)
             return animeGroups
         }
     },
@@ -60,6 +71,7 @@ export default {
             return response.json()
         }).then((jsonResponse) => {
             this.topAiringAnimes = jsonResponse.top
+            this.getHigherResolutionAnimePics()
         })
     }
 }
