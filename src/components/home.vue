@@ -7,7 +7,15 @@
                     <img :src="topAnime.image_url"/>
                 </div>
             </div>
-        </div>    
+        </div>
+        <h2><span class="text-primary">T</span>op <span class="text-primary">U</span>coming <span class="text-primary">A</span>nimes:</h2>
+        <div class="row">
+            <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(topAnime, index) in topUpcoming" :key="index">
+                <div class="top-anime">
+                    <img :src="topAnime.image_url"/>
+                </div>
+            </div>
+        </div>   
     </div>    
 </template>
 
@@ -17,18 +25,21 @@ export default {
     data(){
         return {
             topAiringAnimes: [],
+            topUpcoming: []
         }
     },
     methods: {
-        getHigherResolutionAnimePics(){
-            for(let i = 0; i < this.topAiringAnimes.length; i++){
-                let anime = this.topAiringAnimes[i]
-                fetch(`https://api.jikan.moe/anime/${anime.mal_id}/episodes`, {
+        getHigherResolutionAnimePics(animes){
+            for(let i = 0; i < animes.length; i++){
+                let anime = animes[i]
+                fetch(`https://api.jikan.moe/anime/${anime.mal_id}`, {
                     method: `GET`
                 }).then((response) => {
                     return response.json()
                 }).then((json) => {
-                    anime.image_url = json.image_url
+                    if(json.image_url !== null && typeof json.image_url !== `undefined`){
+                         anime.image_url = json.image_url
+                    }
                 })
             }
         }
@@ -40,7 +51,15 @@ export default {
             return response.json()
         }).then((jsonResponse) => {
             this.topAiringAnimes = jsonResponse.top.slice(0, 12)
-            this.getHigherResolutionAnimePics()
+            this.getHigherResolutionAnimePics(this.topAiringAnimes)
+        })
+        fetch(`https://api.jikan.moe/top/anime/1/upcoming`, {
+            method: `GET`
+        }).then((response) => {
+            return response.json()
+        }).then((jsonResponse) => {
+            this.topUpcoming = jsonResponse.top.slice(0, 12)
+            this.getHigherResolutionAnimePics(this.topUpcoming)
         })
     }
 }
