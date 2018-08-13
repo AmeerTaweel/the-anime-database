@@ -1,21 +1,19 @@
 <template>
     <div id="home">
-        <h2><span class="text-primary">T</span>op <span class="text-primary">A</span>iring <span class="text-primary">A</span>nimes:</h2>
-        <div class="row">
-            <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(topAnime, index) in topAiringAnimes" :key="index">
-                <div class="top-anime">
-                    <img :src="topAnime.image_url"/>
+        <div v-for="(topAnimeGroup, groupIndex) in topAnimes" :key="groupIndex">
+            <h2>
+                <span v-for="(word, wordIndex) in topAnimeGroup.heading" :key="wordIndex">
+                    <span class="text-primary">{{word[0]}}</span>{{word.substring(1, word.length)}}
+                </span>:
+            </h2>
+            <div class="row">
+                <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(anime, animeIndex) in topAnimeGroup.animes" :key="animeIndex">
+                    <div class="top-anime">
+                        <img :src="anime.image_url"/>
+                    </div>
                 </div>
             </div>
         </div>
-        <h2><span class="text-primary">T</span>op <span class="text-primary">U</span>coming <span class="text-primary">A</span>nimes:</h2>
-        <div class="row">
-            <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(topAnime, index) in topUpcoming" :key="index">
-                <div class="top-anime">
-                    <img :src="topAnime.image_url"/>
-                </div>
-            </div>
-        </div>   
     </div>    
 </template>
 
@@ -24,8 +22,24 @@ export default {
     name: `home`,
     data(){
         return {
-            topAiringAnimes: [],
-            topUpcoming: []
+            topAnimes: [
+                {
+                    heading: [`Top`, `Airing`, `Animes`],
+                    animes: []
+                },
+                {
+                    heading: [`Top`, `Upcoming`, `Animes`],
+                    animes: []
+                },
+                {
+                    heading: [`Top`, `Anime`, `Movies`],
+                    animes: []
+                },
+                {
+                    heading: [`Top`, `Animes`, `Of`, `All`, `Time`],
+                    animes: []
+                }
+            ]
         }
     },
     methods: {
@@ -42,25 +56,23 @@ export default {
                     }
                 })
             }
+        },
+        getTopLists(genere, index){
+            fetch(`https://api.jikan.moe/top/anime/1/${genere}`, {
+                method: `GET`
+            }).then((response) => {
+                return response.json()
+            }).then((jsonResponse) => {
+                this.topAnimes[index].animes = jsonResponse.top.slice(0, 12)
+                this.getHigherResolutionAnimePics(this.topAnimes[index].animes)
+            }) 
         }
     },
     created(){
-        fetch(`https://api.jikan.moe/top/anime/1/airing`, {
-            method: `GET`
-        }).then((response) => {
-            return response.json()
-        }).then((jsonResponse) => {
-            this.topAiringAnimes = jsonResponse.top.slice(0, 12)
-            this.getHigherResolutionAnimePics(this.topAiringAnimes)
-        })
-        fetch(`https://api.jikan.moe/top/anime/1/upcoming`, {
-            method: `GET`
-        }).then((response) => {
-            return response.json()
-        }).then((jsonResponse) => {
-            this.topUpcoming = jsonResponse.top.slice(0, 12)
-            this.getHigherResolutionAnimePics(this.topUpcoming)
-        })
+        this.getTopLists(`airing`, 0)
+        this.getTopLists(`upcoming`, 1)
+        this.getTopLists(`movie`, 2)
+        this.getTopLists(`tv`, 3)
     }
 }
 </script>
