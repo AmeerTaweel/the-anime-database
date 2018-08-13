@@ -13,7 +13,7 @@
                         <div class="mask">  
                             <div class="mask-content">
                                 <h5>{{anime.title}}</h5>
-                                <a class="badge badge-info text-white" href="#">Read More...</a>
+                                <a class="badge badge-info text-white" href="javascript:;">Read More...</a>
                             </div>
                         </div>
                     </div>
