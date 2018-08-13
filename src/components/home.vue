@@ -11,7 +11,10 @@
                     <div class="top-anime">
                         <img :src="anime.image_url"/>
                         <div class="mask">  
-                            <h5 class="mask-content">{{anime.title}}</h5>  
+                            <div class="mask-content">
+                                <h5>{{anime.title}}</h5>
+                                <a class="badge badge-info text-white" href="#">Read More...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +115,6 @@ export default {
     opacity: 0;
     overflow:visible;
     box-sizing:border-box;
-    transition: all 0s ease-in-out;
     position: absolute;
     overflow: hidden;
     top: 0;
@@ -129,7 +131,7 @@ export default {
 
 .mask:hover {
     opacity: 1; 
-    background-color:rgba(255, 255, 255, 0.5);
+    background-color:rgba(255, 255, 255, 0.75);
     animation: hoverAnime 0.4s;
 }
 
