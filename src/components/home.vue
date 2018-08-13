@@ -10,6 +10,9 @@
                 <div class="top-anime-container col-6 col-sm-4 col-md-3 col-xl-2" v-for="(anime, animeIndex) in topAnimeGroup.animes" :key="animeIndex">
                     <div class="top-anime">
                         <img :src="anime.image_url"/>
+                        <div class="mask">  
+                            <h5 class="mask-content">{{anime.title}}</h5>  
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,14 +88,70 @@ export default {
 .top-anime-container{
     padding: 10px;
 }
+.top-anime:hover{
+    animation: box-shadow-animation 0.4s;
+    animation-fill-mode: forwards;
+}
 .top-anime{
     background: black;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
+    border: 1px solid black;
+    float: left;
+    overflow: hidden;
+    position: relative;
 }
 .top-anime > img{
     width:100%;
     min-height:100%;
     object-fit: cover;
+    border-radius: 5px;
+}
+.mask{
+    opacity: 0;
+    overflow:visible;
+    box-sizing:border-box;
+    transition: all 0s ease-in-out;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.mask-content{
+    position: absolute;
+    bottom: 0;
+    margin: 5px;
+}
+
+.mask:hover {
+    opacity: 1; 
+    background-color:rgba(255, 255, 255, 0.5);
+    animation: hoverAnime 0.4s;
+}
+
+@keyframes hoverAnime {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes box-shadow-animation {
+    0% {
+        box-shadow: 0px 0px;
+        -webkit-box-shadow: 0px 0px;
+        -moz-box-shadow: 0px 0px;
+    }
+    100% {
+        box-shadow: 5px 5px 5px grey;
+        -webkit-box-shadow: 5px 5px 5px grey;
+        -moz-box-shadow: 5px 5px 5px grey;
+    }
 }
 </style>
