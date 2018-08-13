@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <div v-for="(topAnimeGroup, groupIndex) in topAnimes" :key="groupIndex">
+        <div v-for="(topAnimeGroup, groupIndex) in topAnimes" :key="groupIndex" class="top-anime-section">
             <h2>
                 <span v-for="(word, wordIndex) in topAnimeGroup.heading" :key="wordIndex">
                     <span class="text-primary">{{word[0]}}</span>{{word.substring(1, word.length)}}
@@ -13,6 +13,7 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-primary">View More...</button>
         </div>
     </div>    
 </template>
@@ -78,6 +79,9 @@ export default {
 </script>
 
 <style>
+.top-anime-section{
+    margin: 20px 0px 20px 0px;
+}
 .top-anime-container{
     padding: 10px;
 }
