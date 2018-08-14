@@ -6,6 +6,7 @@ Online database of information about Japanese Anime, made with Vue.js and Bootst
 
 * Clean, easy-to-use, and responsive design.
 * Display lists of top airing animes, upcoming animes, movie animes and best animes of all time.
+* Uses Vue-Router for navigation.
 
 ## License
 
