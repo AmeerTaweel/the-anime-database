@@ -1,6 +1,6 @@
 <template>
     <div id="anime">
-        <h1>Anime Component</h1>
+        <h1>{{id}}</h1>
     </div>    
 </template>
 
@@ -9,7 +9,7 @@ export default {
     name: `anime`,
     data(){
         return {
-
+            id: this.$route.params.id
         }
     }
 }

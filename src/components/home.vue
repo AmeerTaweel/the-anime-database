@@ -13,7 +13,7 @@
                         <div class="mask">  
                             <div class="mask-content">
                                 <h5>{{anime.title}}</h5>
-                                <a class="badge badge-info text-white" href="javascript:;">Read More...</a>
+                                <a class="badge badge-info text-white" href="javascript:;" @click="showAnimeDetails(anime.mal_id)">Read More...</a>
                             </div>
                         </div>
                     </div>
@@ -73,6 +73,9 @@ export default {
                 this.topAnimes[index].animes = jsonResponse.top.slice(0, 12)
                 this.getHigherResolutionAnimePics(this.topAnimes[index].animes)
             }) 
+        },
+        showAnimeDetails(animeID){
+            this.$router.push(`/anime/${animeID}`)
         }
     },
     created(){
