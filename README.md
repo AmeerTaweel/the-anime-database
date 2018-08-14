@@ -1,6 +1,6 @@
 # TADB - The Anime Database
 
-Online database of information about Japanese Anime, made with Vue.js, iView and Bootstrap.
+Online database of information about Japanese Anime, made with Vue.js and Bootstrap.
 
 ## Features
 
