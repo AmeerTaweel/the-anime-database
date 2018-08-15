@@ -1,6 +1,13 @@
 <template>
     <div id="anime">
-        <h1>{{anime.title}}</h1>
+        <div class="row">
+            <div class="anime-image-container col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
+                <img class="anime-image rounded mx-auto d-block" :src="anime.image_url"/>
+            </div>
+            <div class="col-12 col-sm-6 col-md-8 col-lg-9 mt-4">
+                <h3 class="text-left">{{anime.title}}</h3>
+            </div>    
+        </div>
     </div>    
 </template>
 
@@ -36,3 +43,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.anime-image {
+    border-radius: 10px;
+    border: 1px solid black;
+}
+</style>
