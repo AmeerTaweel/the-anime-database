@@ -5,7 +5,16 @@
                 <img class="anime-image rounded mx-auto d-block" :src="anime.image_url"/>
             </div>
             <div class="col-12 col-sm-6 col-md-8 col-lg-9 mt-4">
-                <h3 class="text-left">{{anime.title}}</h3>
+                <h2 class="text-left">{{anime.title}}</h2>
+                <div class="row">
+                    <h3 class="col-12 col-lg-6"><span class="text-primary">Score</span>: {{anime.score}}</h3>
+                    <h3 class="col-12 col-lg-6"><span class="text-primary">Ranked</span>: #{{anime.rank}}</h3>
+                    <h3 class="col-12 col-lg-6"><span class="text-primary">Popularity</span>: {{anime.popularity}}</h3>
+                    <h3 class="col-12 col-lg-6"><span class="text-primary">Members</span>: {{anime.members}}</h3>
+                    <hr class="col-11"/>
+                    <h5 class="col-12 font-weight-bold">Synopsis:</h5>
+                    <p class="col-12">{{anime.synopsis}}</p>
+                </div>
             </div>    
         </div>
     </div>    
