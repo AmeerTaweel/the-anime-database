@@ -1,16 +1,18 @@
 <template>
     <div id="anime">
         <div class="row">
-            <div class="anime-image-container col-12 col-sm-6 col-md-4 col-lg-3 mt-4">
-                <img class="anime-image rounded mx-auto d-block" :src="anime.image_url"/>
+            <h2 class="text-left col-12">{{anime.title}}</h2>
+        </div>
+        <div class="row">
+            <div class="anime-image-container col-12 col-md-4 col-lg-3 mt-4">
+                <img class="anime-image" :src="anime.image_url"/>
             </div>
-            <div class="col-12 col-sm-6 col-md-8 col-lg-9 mt-4">
-                <h2 class="text-left">{{anime.title}}</h2>
+            <div class="col-12 col-md-8 col-lg-9 mt-4">
                 <div class="row">
-                    <h3 class="col-12 col-lg-6"><span class="text-primary">Score</span>: {{anime.score}}</h3>
-                    <h3 class="col-12 col-lg-6"><span class="text-primary">Ranked</span>: #{{anime.rank}}</h3>
-                    <h3 class="col-12 col-lg-6"><span class="text-primary">Popularity</span>: {{anime.popularity}}</h3>
-                    <h3 class="col-12 col-lg-6"><span class="text-primary">Members</span>: {{anime.members}}</h3>
+                    <h5 class="col-12 col-lg-6"><span class="text-primary">Score</span>: {{anime.score}}</h5>
+                    <h5 class="col-12 col-lg-6"><span class="text-primary">Ranked</span>: #{{anime.rank}}</h5>
+                    <h5 class="col-12 col-lg-6"><span class="text-primary">Popularity</span>: {{anime.popularity}}</h5>
+                    <h5 class="col-12 col-lg-6"><span class="text-primary">Members</span>: {{anime.members}}</h5>
                     <hr class="col-11"/>
                     <h5 class="col-12 font-weight-bold">Synopsis:</h5>
                     <p class="col-12">{{anime.synopsis}}</p>
