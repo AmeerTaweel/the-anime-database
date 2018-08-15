@@ -9,6 +9,9 @@
                     <div class="col-12 my-4">
                         <img class="anime-image" :src="anime.image_url"/>
                     </div>
+                    <h4 class="col-12 font-weight-bold">Information:</h4>
+                    <br/>
+                    <br/>
                     <h5 class="col-12"><span class="text-primary">Type</span>: {{anime.type}}</h5>
                     <h5 class="col-12"><span class="text-primary">Episodes</span>: {{anime.episodes}}</h5>
                     <h5 class="col-12"><span class="text-primary">Status</span>: {{anime.status}}</h5>
@@ -19,19 +22,30 @@
                     <h5 class="col-12"><span class="text-primary">Licensors</span>: <span v-for="(licensor, index) in anime.licensor" :key="index">{{licensor.name}}<span v-if="anime.licensor.length > index + 1">, </span></span></h5>
                     <h5 class="col-12"><span class="text-primary">Studios</span>: <span v-for="(studio, index) in anime.studio" :key="index">{{studio.name}}<span v-if="anime.studio.length > index + 1">, </span></span></h5>
                     <h5 class="col-12"><span class="text-primary">Source</span>: {{anime.source}}</h5>
+                    <h5 class="col-12"><span class="text-primary">Genres</span>: <span v-for="(genre, index) in anime.genre" :key="index">{{genre.name}}<span v-if="anime.genre.length > index + 1">, </span></span></h5>
+                    <h5 class="col-12"><span class="text-primary">Duration</span>: {{anime.duration}}</h5>
                 </div>
             </div>
             <div class="col-12 col-md-8 col-lg-9 mt-4">
                 <div class="row">
+                    <h4 class="col-12 font-weight-bold">Statistics:</h4>
+                    <br/>
+                    <br/>
                     <h5 class="col-12 col-lg-6"><span class="text-primary">Score</span>: {{anime.score}}</h5>
                     <h5 class="col-12 col-lg-6"><span class="text-primary">Ranked</span>: #{{anime.rank}}</h5>
                     <h5 class="col-12 col-lg-6"><span class="text-primary">Popularity</span>: {{anime.popularity}}</h5>
                     <h5 class="col-12 col-lg-6"><span class="text-primary">Members</span>: {{anime.members}}</h5>
-                    <hr class="col-11"/>
-                    <h5 class="col-12 font-weight-bold">Synopsis:</h5>
+                    <br/>
+                    <br/>
+                    <h4 class="col-12 font-weight-bold">Synopsis:</h4>
+                    <br/>
+                    <br/>
                     <p class="col-12">{{anime.synopsis}}</p>
-                    <hr v-if="anime.background" class="col-11"/>
-                    <h5 v-if="anime.background" class="col-12 font-weight-bold">Background:</h5>
+                    <br/>
+                    <br/>
+                    <h4 v-if="anime.background" class="col-12 font-weight-bold">Background:</h4>
+                    <br/>
+                    <br/>
                     <p v-if="anime.background" class="col-12">{{anime.background}}</p>
                 </div>
             </div>    
