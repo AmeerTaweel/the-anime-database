@@ -9,6 +9,14 @@
                     <div class="col-12 my-4">
                         <img class="anime-image" :src="anime.image_url"/>
                     </div>
+                    <h4 class="col-12 font-weight-bold">Alternative Titles:</h4>
+                    <br/>
+                    <br/>
+                    <h5 class="col-12" v-if="anime.title_japanese"><span class="text-primary">Japanese</span>: {{anime.title_japanese}}</h5>
+                    <h5 class="col-12" v-if="anime.title_english"><span class="text-primary">English</span>: {{anime.title_english}}</h5>
+                    <h5 class="col-12" v-if="anime.title_synonyms"><span class="text-primary">Synonyms</span>: {{anime.title_synonyms}}</h5>
+                    <br/>
+                    <br/>
                     <h4 class="col-12 font-weight-bold">Information:</h4>
                     <br/>
                     <br/>
