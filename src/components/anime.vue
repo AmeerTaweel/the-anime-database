@@ -63,6 +63,7 @@
                     <h5 class="col-12" v-if="anime.related.Adaptation"><span class="text-primary">Adaptation</span>: <span v-for="(adaptation, index) in anime.related.Adaptation" :key="index">{{adaptation.title}}<span v-if="anime.related.Adaptation.length > index + 1">, </span></span></h5>
                     <h5 class="col-12" v-if="anime.related['Side story']"><span class="text-primary">Side Story</span>: <span v-for="(sideStory, index) in anime.related['Side story']" :key="index">{{sideStory.title}}<span v-if="anime.related['Side story'].length > index + 1">, </span></span></h5>
                     <h5 class="col-12" v-if="anime.related.Summary"><span class="text-primary">Summary</span>: <span v-for="(summary, index) in anime.related.Summary" :key="index">{{summary.title}}<span v-if="anime.related.Summary.length > index + 1">, </span></span></h5>
+                    <h5 class="col-12" v-if="anime.related['Parent story']"><span class="text-primary">Parent Story</span>: <span v-for="(parentStory, index) in anime.related['Parent story']" :key="index">{{parentStory.title}}<span v-if="anime.related['Parent story'].length > index + 1">, </span></span></h5>
                     <br/>
                     <br/>
                     <h4 class="col-12 font-weight-bold" v-if="anime.opening_theme">Opening Theme:</h4>
