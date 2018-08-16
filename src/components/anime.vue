@@ -77,10 +77,14 @@
                             <br/>
                         </div>
                     </div>
-                    <h4 class="col-12 font-weight-bold" v-if="anime.opening_theme">Opening Theme:</h4>
-                    <h5 class="col-12" v-if="anime.opening_theme" v-for="(theme, index) in anime.opening_theme" :key="index">{{theme}}</h5>
-                    <br/>
-                    <br/>
+                    <div class="col-12" v-if="anime.opening_theme && anime.opening_theme.length > 0">
+                        <div class="row">
+                            <h4 class="col-12 font-weight-bold">Opening Theme:</h4>
+                            <h5 class="col-12" v-for="(theme, index) in anime.opening_theme" :key="index">{{theme}}</h5>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
                     <h4 class="col-12 font-weight-bold" v-if="anime.ending_theme">Ending Theme:</h4>
                     <h5 class="col-12" v-if="anime.ending_theme" v-for="(theme, index) in anime.ending_theme" :key="index">{{theme}}</h5>
                     <br/>
