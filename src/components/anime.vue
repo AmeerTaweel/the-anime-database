@@ -55,6 +55,24 @@
                     <br/>
                     <br/>
                     <p v-if="anime.background" class="col-12">{{anime.background}}</p>
+                    <br/>
+                    <br/>
+                    <h4 class="col-12 font-weight-bold">Related Anime:</h4>
+                    <br/>
+                    <br/>
+                    <h5 class="col-12" v-if="anime.related.Adaptation"><span class="text-primary">Adaptation</span>: <span v-for="(adaptation, index) in anime.related.Adaptation" :key="index">{{adaptation.title}}<span v-if="anime.related.Adaptation.length > index + 1">, </span></span></h5>
+                    <h5 class="col-12" v-if="anime.related['Side story']"><span class="text-primary">Side Story</span>: <span v-for="(sideStory, index) in anime.related['Side story']" :key="index">{{sideStory.title}}<span v-if="anime.related['Side story'].length > index + 1">, </span></span></h5>
+                    <h5 class="col-12" v-if="anime.related.Summary"><span class="text-primary">Summary</span>: <span v-for="(summary, index) in anime.related.Summary" :key="index">{{summary.title}}<span v-if="anime.related.Summary.length > index + 1">, </span></span></h5>
+                    <br/>
+                    <br/>
+                    <h4 class="col-12 font-weight-bold" v-if="anime.opening_theme">Opening Theme:</h4>
+                    <h5 class="col-12" v-if="anime.opening_theme" v-for="(theme, index) in anime.opening_theme" :key="index">{{theme}}</h5>
+                    <br/>
+                    <br/>
+                    <h4 class="col-12 font-weight-bold" v-if="anime.ending_theme">Ending Theme:</h4>
+                    <h5 class="col-12" v-if="anime.ending_theme" v-for="(theme, index) in anime.ending_theme" :key="index">{{theme}}</h5>
+                    <br/>
+                    <br/>    
                 </div>
             </div>    
         </div>
