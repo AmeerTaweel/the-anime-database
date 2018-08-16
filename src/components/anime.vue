@@ -51,12 +51,16 @@
                     <p class="col-12">{{anime.synopsis}}</p>
                     <br/>
                     <br/>
-                    <h4 v-if="anime.background" class="col-12 font-weight-bold">Background:</h4>
-                    <br/>
-                    <br/>
-                    <p v-if="anime.background" class="col-12">{{anime.background}}</p>
-                    <br/>
-                    <br/>
+                    <div v-if="anime.background" class="col-12">
+                        <div class="row">
+                            <h4 class="col-12 font-weight-bold">Background:</h4>
+                            <br/>
+                            <br/>
+                            <p class="col-12">{{anime.background}}</p>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
                     <h4 class="col-12 font-weight-bold">Related Anime:</h4>
                     <br/>
                     <br/>
