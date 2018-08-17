@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary">View More...</button>
+            <button type="button" class="btn btn-primary" @click="showMoreTopAnime(topAnimeGroup.type)">View More...</button>
         </div>
     </div>    
 </template>
@@ -32,19 +32,23 @@ export default {
             topAnimes: [
                 {
                     heading: [`Top`, `Airing`, `Animes`],
-                    animes: []
+                    animes: [],
+                    type: `airing`
                 },
                 {
                     heading: [`Top`, `Upcoming`, `Animes`],
-                    animes: []
+                    animes: [],
+                    type: `upcoming`
                 },
                 {
                     heading: [`Top`, `Anime`, `Movies`],
-                    animes: []
+                    animes: [],
+                    type: `movie`
                 },
                 {
                     heading: [`Top`, `Animes`, `Of`, `All`, `Time`],
-                    animes: []
+                    animes: [],
+                    type: `tv`
                 }
             ]
         }
@@ -76,13 +80,15 @@ export default {
         },
         showAnimeDetails(animeID){
             this.$router.push(`/anime/${animeID}`)
+        },
+        showMoreTopAnime(type){
+            this.$router.push(`/top-anime/${type}`)
         }
     },
     created(){
-        this.getTopLists(`airing`, 0)
-        this.getTopLists(`upcoming`, 1)
-        this.getTopLists(`movie`, 2)
-        this.getTopLists(`tv`, 3)
+        this.topAnimes.forEach((topAnimeType, index) => {
+            this.getTopLists(topAnimeType.type, index)
+        })
     }
 }
 </script>
