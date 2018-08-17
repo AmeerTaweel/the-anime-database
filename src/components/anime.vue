@@ -121,10 +121,18 @@ export default {
             fetch(`https://api.jikan.moe/anime/${this.id}`, {
                 method: `GET`
             }).then((response) => {
-                return response.json()
-            }).then((json) => {
-                this.anime = json
+                if(response.status === 200){
+                    return response.json().then((json) => {
+                        this.anime = json
+                    })
+                }else{
+                    this.goTo404()
+                    return null
+                }
             })
+        },
+        goTo404(){
+            this.$router.push('/404/page-not-found')
         }
     },
     created(){

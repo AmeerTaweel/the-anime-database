@@ -17,6 +17,10 @@ const routes = [
     component: Anime
   },
   {
+    path: `/404/page-not-found`,
+    component: PageNotFound
+  },
+  {
     path: `*`,
     component: PageNotFound
   }
