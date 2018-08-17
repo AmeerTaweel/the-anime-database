@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from './components/home.vue'
 import Anime from './components/anime.vue'
 import PageNotFound from './components/pageNotFound.vue'
+import TopAnime from './components/topAnime.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,10 @@ const routes = [
   {
     path: `/anime/:id`,
     component: Anime
+  },
+  {
+    path: `/top-anime/:type`,
+    component: TopAnime
   },
   {
     path: `/404/page-not-found`,
