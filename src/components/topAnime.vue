@@ -21,20 +21,29 @@ export default {
     },methods: {
         updateType(){
             this.type = this.$route.params.type
-            this.checkType()
+            if(this.checkType()){
+                this.getTopAnime()
+            }
+        },
+        getTopAnime(){
+            
         },
         goTo404(){
             this.$router.push('/404/page-not-found')
         },
         checkType(){
-            const validTypes = [`airing`, `upcoming`, `movie`, `tv`]
+            const validTypes = [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`]
             if(!validTypes.includes(this.type)){
                 this.goTo404()
+                return false
             }
+            return true
         }
     },
     created(){
-        this.checkType()
+        if(this.checkType()){
+            this.getTopAnime()
+        }
     },
     computed: {
         displayType(){
@@ -50,6 +59,12 @@ export default {
                     break
                 case `tv`:
                     return [`Top`, `Animes`, `Of`, `All`, `Time`]
+                    break
+                case `special`:
+                    return [`Top`, `Special`, `Animes`]
+                    break
+                case `ova`:
+                    return [`Top`, `OVA`, `Animes`]
                     break
             }
         }

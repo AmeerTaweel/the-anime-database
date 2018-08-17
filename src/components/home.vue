@@ -49,6 +49,16 @@ export default {
                     heading: [`Top`, `Animes`, `Of`, `All`, `Time`],
                     animes: [],
                     type: `tv`
+                },
+                {
+                    heading: [`Top`, `Special`, `Animes`],
+                    animes: [],
+                    type: `ova`
+                },
+                {
+                    heading: [`Top`, `OVA`, `Animes`],
+                    animes: [],
+                    type: `special`
                 }
             ]
         }
