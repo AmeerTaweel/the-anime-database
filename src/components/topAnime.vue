@@ -1,7 +1,10 @@
 <template>
     <div id="top-anime">
-        <h1>Top Anime</h1>
-        {{type}}
+        <h2>
+            <span v-for="(word, index) in displayType" :key="index">
+                <span class="text-primary">{{word[0]}}</span>{{word.substring(1, word.length)}}
+            </span>:
+        </h2>
     </div>
 </template>
 
@@ -32,6 +35,24 @@ export default {
     },
     created(){
         this.checkType()
+    },
+    computed: {
+        displayType(){
+            switch(this.type){
+                case `airing`:
+                    return [`Top`, `Airing`, `Animes`]
+                    break
+                case `upcoming`:
+                    return [`Top`, `Upcoming`, `Animes`]
+                    break
+                case `movie`:
+                    return [`Top`, `Anime`, `Movies`]
+                    break
+                case `tv`:
+                    return [`Top`, `Animes`, `Of`, `All`, `Time`]
+                    break
+            }
+        }
     }
 }
 </script>
