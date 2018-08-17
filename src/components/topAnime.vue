@@ -5,6 +5,9 @@
                 <span class="text-primary">{{word[0]}}</span>{{word.substring(1, word.length)}}
             </span>:
         </h2>
+        <div class="row">
+            <h4 class="col-12" v-for="(anime, index) in topAnimes" :key="index">{{anime.title}}</h4>
+        </div>    
     </div>
 </template>
 
@@ -13,7 +16,9 @@ export default {
     name: `top-anime`,
     data(){
         return {
-            type: this.$route.params.type
+            type: this.$route.params.type,
+            topAnimes: [],
+            page: 1
         }
     },
     watch: {
@@ -26,7 +31,13 @@ export default {
             }
         },
         getTopAnime(){
-            
+            fetch(`https://api.jikan.moe/top/anime/${this.page}/${this.type}`, {
+                method: `GET`
+            }).then((response) => {
+                return response.json()
+            }).then((jsonResponse) => {
+                this.topAnimes = jsonResponse.top
+            })
         },
         goTo404(){
             this.$router.push('/404/page-not-found')
