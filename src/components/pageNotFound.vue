@@ -12,12 +12,20 @@
         <h1 class="text-danger text-center">Error 404: Page Not Found</h1>
         <h1 class="text-muted text-center"><small>This page isn't available</small></h1>
         <h2 class="text-muted text-center"><small>The link you followed may be broken, or the page may have been removed.</small></h2>
+        <div class="row justify-content-center m-4">
+            <button type="button" class="btn btn-primary btn-lg" @click="goHome">Go To Homepage</button>
+        </div>    
     </div>    
 </template>
 
 <script>
 export default {
-    name: `page-not-found`
+    name: `page-not-found`,
+    methods: {
+        goHome(){
+            this.$router.push('/home')
+        }
+    }
 }
 </script>
 
