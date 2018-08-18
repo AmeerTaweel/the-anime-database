@@ -6,7 +6,24 @@
             </span>:
         </h2>
         <div class="row">
-            <h4 class="col-12" v-for="(anime, index) in topAnimes" :key="index">{{anime.title}}</h4>
+            <div class="col-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Rank</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(anime, index) in topAnimes" :key="index">
+                            <td>{{index + 1}}</td>
+                            <td>{{anime.title}}</td>
+                            <td>{{anime.score}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>    
     </div>
 </template>
