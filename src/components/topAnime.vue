@@ -19,8 +19,14 @@
                         <tr v-for="(anime, index) in topAnimes" :key="index">
                             <td class="align-middle text-center text-muted"><h2>#{{index + 1}}</h2></td>
                             <td>
-                                <img :src="anime.image_url"/>
-                                {{anime.title}}
+                                <div class="row">
+                                    <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                                        <img class="border border-dark rounded mx-auto d-block" :src="anime.image_url"/>
+                                    </div>
+                                    <div class="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10">
+                                        <h4 class="d-inline align-top">{{anime.title}}</h4>
+                                    </div>
+                                </div>
                             </td>
                             <td class="align-middle text-center">
                                 <svg class="s-36px rounded mx-auto d-block m-1" viewBox="0 0 24 24">
