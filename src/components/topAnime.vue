@@ -18,7 +18,7 @@
                     <tbody>
                         <tr v-for="(anime, index) in topAnimes" :key="index">
                             <td class="align-middle text-center text-muted"><h2>#{{index + 1}}</h2></td>
-                            <td>
+                            <td class="pointer" @click="showAnimeDetails(anime.mal_id)">
                                 <div class="row">
                                     <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
                                         <img class="border border-dark rounded mx-auto d-block" :src="anime.image_url"/>
@@ -88,6 +88,9 @@ export default {
                 return false
             }
             return true
+        },
+        showAnimeDetails(animeID){
+            this.$router.push(`/anime/${animeID}`)
         }
     },
     created(){
