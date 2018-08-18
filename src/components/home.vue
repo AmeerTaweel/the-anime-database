@@ -53,12 +53,12 @@ export default {
                 {
                     heading: [`Top`, `Special`, `Animes`],
                     animes: [],
-                    type: `ova`
+                    type: `special`
                 },
                 {
                     heading: [`Top`, `OVA`, `Animes`],
                     animes: [],
-                    type: `special`
+                    type: `ova`
                 }
             ]
         }
