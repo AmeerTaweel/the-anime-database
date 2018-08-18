@@ -24,7 +24,10 @@
                                         <img class="border border-dark rounded mx-auto d-block" :src="anime.image_url"/>
                                     </div>
                                     <div class="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10">
-                                        <h4 class="d-inline align-top">{{anime.title}}</h4>
+                                        <h4 class="align-top">{{anime.title}}</h4>
+                                        <h5 class="align-top text-muted">{{anime.type}} ({{anime.episodes}} eps)</h5>
+                                        <h5 class="align-top text-muted">{{anime.airing_start || `?`}} - {{anime.airing_end || `?`}}</h5>
+                                        <h5 class="align-top text-muted">{{anime.members}} members</h5>
                                     </div>
                                 </div>
                             </td>
@@ -32,7 +35,7 @@
                                 <svg class="s-36px rounded mx-auto d-block m-1" viewBox="0 0 24 24">
                                     <path fill="#FDD835" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
                                 </svg>
-                                <h5 class="d-block m-1">{{anime.score}}</h5>
+                                <h5 class="d-block m-1">{{anime.score || `N/A`}}</h5>
                             </td>
                         </tr>
                     </tbody>
