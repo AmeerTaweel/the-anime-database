@@ -34,9 +34,14 @@ export default {
             fetch(`https://api.jikan.moe/top/anime/${this.page}/${this.type}`, {
                 method: `GET`
             }).then((response) => {
-                return response.json()
-            }).then((jsonResponse) => {
-                this.topAnimes = jsonResponse.top
+                if(response.status === 200){
+                    return response.json().then((jsonResponse) => {
+                        this.topAnimes = jsonResponse.top
+                    })
+                }else{
+                    this.goTo404()
+                    return null
+                }
             })
         },
         goTo404(){
