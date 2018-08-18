@@ -28,4 +28,8 @@ hr {
 .home {
   cursor: pointer;
 }
+.s-36px{
+  width: 36px;
+  height: 36px;
+}
 </style>

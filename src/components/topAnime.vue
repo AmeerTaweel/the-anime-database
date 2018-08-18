@@ -10,16 +10,24 @@
                 <table class="table table-bordered table-hover">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th>Rank</th>
+                            <th class="text-center">Rank</th>
                             <th>Title</th>
                             <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(anime, index) in topAnimes" :key="index">
-                            <td>#{{index + 1}}</td>
-                            <td>{{anime.title}}</td>
-                            <td>{{anime.score}}</td>
+                            <td class="align-middle text-center text-muted"><h2>#{{index + 1}}</h2></td>
+                            <td>
+                                <img :src="anime.image_url"/>
+                                {{anime.title}}
+                            </td>
+                            <td class="align-middle text-center">
+                                <svg class="s-36px rounded mx-auto d-block m-1" viewBox="0 0 24 24">
+                                    <path fill="#FDD835" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                                </svg>
+                                <h5 class="d-block m-1">{{anime.score}}</h5>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
