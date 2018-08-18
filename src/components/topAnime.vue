@@ -6,18 +6,18 @@
             </span>:
         </h2>
         <div class="row">
-            <div class="col-12">
-                <table class="table">
-                    <thead class="thead-dark">
+            <div class="col-12 my-2">
+                <table class="table table-bordered table-hover">
+                    <thead class="bg-primary text-white">
                         <tr>
-                            <th scope="col">Rank</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Score</th>
+                            <th>Rank</th>
+                            <th>Title</th>
+                            <th>Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="(anime, index) in topAnimes" :key="index">
-                            <td>{{index + 1}}</td>
+                            <td>#{{index + 1}}</td>
                             <td>{{anime.title}}</td>
                             <td>{{anime.score}}</td>
                         </tr>
