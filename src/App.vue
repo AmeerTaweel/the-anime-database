@@ -22,6 +22,14 @@
               <!-- <div class="dropdown-divider"></div> -->
             </div>
           </li>
+          <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScheduleDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Schedule
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarScheduleDropdown">
+              <router-link v-for="(day, index) in schedule" :key="index" class="dropdown-item" :to="`/schedule/${day}`">{{day[0].toUpperCase()}}{{day.substr(1)}} Schedule</router-link>
+            </div>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -39,7 +47,8 @@ export default {
   name: 'app',
   data(){
     return {
-      topAnime: [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`]
+      topAnime: [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`],
+      schedule: [`all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`]
     }
   },
   methods: {
