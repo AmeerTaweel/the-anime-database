@@ -48,7 +48,7 @@ export default {
   data(){
     return {
       topAnime: [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`],
-      schedule: [`all`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`]
+      schedule: [`monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`]
     }
   },
   methods: {
