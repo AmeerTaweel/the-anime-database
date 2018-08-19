@@ -1,6 +1,6 @@
 <template>
     <div id="schedule">
-        YattaZo
+        <h1><span class="text-primary">{{day[0].toUpperCase()}}</span>{{day.substr(1)}} <span class="text-primary">A</span>nime <span class="text-primary">S</span>chedule:</h1>
     </div>
 </template>
 
