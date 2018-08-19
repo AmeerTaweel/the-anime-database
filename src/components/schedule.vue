@@ -36,12 +36,20 @@ export default {
         },
         getSchedule(){
             let fetchDay = this.day
+            if(fetchDay === 'all'){
+                fetchDay = ''
+            }
             fetch(`https://api.jikan.moe/schedule/${fetchDay}`, {
                 method: `GET`
             }).then((response) => {
-                return response.json()
-            }).then((jsonResponse) => {
-
+                if(response.status === 200){
+                    return response.json().then((jsonResponse) => {
+                        this.schedule = jsonResponse
+                    })
+                }else{
+                    this.goTo404()
+                    return null
+                }
             })
         }
     },
