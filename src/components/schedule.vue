@@ -2,7 +2,7 @@
     <div id="schedule">
         <h1><span class="text-primary">{{day[0].toUpperCase()}}</span>{{day.substr(1)}} <span class="text-primary">A</span>nime <span class="text-primary">S</span>chedule:</h1>
         <div class="row">
-            <div class="col-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
+            <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
                 <div class="card border-primary h-100">
                     <div class="card-header text-primary">{{anime.title}}</div>
                     <div class="row">
@@ -19,7 +19,10 @@
                             </div>
                         </div>    
                         <div class="col-6">
-                            <img class="card-img-right w-100 rounded-left" :src="anime.image_url"/>
+                            <img class="w-100 rounded-left" :src="anime.image_url"/>
+                        </div>
+                        <div class="col-6">
+                            <p>{{anime.synopsis}}</p>
                         </div>
                     </div>
                 </div>
