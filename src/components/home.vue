@@ -92,7 +92,7 @@ export default {
             this.$router.push(`/anime/${animeID}`)
         },
         showMoreTopAnime(type){
-            this.$router.push(`/top-anime/${type}`)
+            this.$router.push(`/top-anime/1/${type}`)
         }
     },
     created(){

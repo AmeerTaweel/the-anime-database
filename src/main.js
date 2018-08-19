@@ -18,7 +18,7 @@ const routes = [
     component: Anime
   },
   {
-    path: `/top-anime/:type`,
+    path: `/top-anime/:page/:type`,
     component: TopAnime
   },
   {

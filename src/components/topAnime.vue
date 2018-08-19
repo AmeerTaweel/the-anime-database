@@ -17,7 +17,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(anime, index) in topAnimes" :key="index">
-                            <td class="align-middle text-center text-muted"><h2>#{{index + 1}}</h2></td>
+                            <td class="align-middle text-center text-muted"><h2>#{{anime.rank}}</h2></td>
                             <td class="pointer" @click="showAnimeDetails(anime.mal_id)">
                                 <div class="row">
                                     <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
@@ -41,7 +41,12 @@
                     </tbody>
                 </table>
             </div>
-        </div>    
+        </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" v-for="(page, index) in pages" :key="index" :class="isActivePage(page)"><router-link :to="`/top-anime/${page}/${type}`" class="page-link">{{page}}</router-link></li>
+            </ul>
+        </nav>  
     </div>
 </template>
 
@@ -52,14 +57,16 @@ export default {
         return {
             type: this.$route.params.type,
             topAnimes: [],
-            page: 1
+            page: this.$route.params.page,
+            pages: [`1`, `2`, `3`, `4`, `5`]
         }
     },
     watch: {
-        '$route': 'updateType'
+        '$route': 'update'
     },methods: {
-        updateType(){
+        update(){
             this.type = this.$route.params.type
+            this.page = this.$route.params.page
             if(this.checkType()){
                 this.getTopAnime()
             }
@@ -83,7 +90,8 @@ export default {
         },
         checkType(){
             const validTypes = [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`]
-            if(!validTypes.includes(this.type)){
+            console.log(this.page)
+            if(!validTypes.includes(this.type) || !this.pages.includes(this.page)){
                 this.goTo404()
                 return false
             }
@@ -91,6 +99,11 @@ export default {
         },
         showAnimeDetails(animeID){
             this.$router.push(`/anime/${animeID}`)
+        },
+        isActivePage(page){
+            if(this.page === page){
+                return `active`
+            }
         }
     },
     created(){
