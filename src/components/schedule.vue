@@ -84,12 +84,14 @@ export default {
         setParagraphHeight(){
             this.schedule.forEach((anime) => {
                 let image = document.getElementById(`${anime.mal_id}-image`)
-                image.addEventListener('load', () => {
+                const preventParagraphOverflow = () => {
                     let imageHeight = image.clientHeight
                     document.getElementById(`${anime.mal_id}-synopsis`).style.height = `${imageHeight}px`
-                })
+                }
+                image.addEventListener('load', preventParagraphOverflow)
+                window.addEventListener(`resize`, preventParagraphOverflow)
             })
-        }
+        },
     },
     computed: {
         getFormattedSchedule(){
