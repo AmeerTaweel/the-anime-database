@@ -20,10 +20,10 @@
                             </div>
                         </div>    
                         <div class="col-6">
-                            <img class="w-100 rounded-left" :src="anime.image_url"/>
+                            <img :id="`${anime.mal_id}-image`" class="w-100 rounded-left" :src="anime.image_url"/>
                         </div>
                         <div class="col-6">
-                            <div class="scrollable">
+                            <div :id="`${anime.mal_id}-synopsis`" class="scrollable">
                                 <p>{{anime.synopsis}}</p>
                             </div>
                         </div>
@@ -80,6 +80,12 @@ export default {
         },
         showAnimeDetails(animeID){
             this.$router.push(`/anime/${animeID}`)
+        },
+        setParagraphHeight(){
+            this.schedule.forEach((anime) => {
+                const imageHeight = document.getElementById(`${anime.mal_id}-image`).clientHeight
+                document.getElementById(`${anime.mal_id}-synopsis`).style.height = `${imageHeight}px`
+            })
         }
     },
     computed: {
@@ -95,6 +101,9 @@ export default {
         if(this.checkDay()){
             this.getSchedule()
         }
+    },
+    updated(){
+        this.setParagraphHeight()
     }
 }
 </script>
