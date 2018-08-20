@@ -73,4 +73,8 @@ hr {
   width: 36px;
   height: 36px;
 }
+.s-24px{
+    width: 24px;
+    height: 24px;
+}
 </style>
