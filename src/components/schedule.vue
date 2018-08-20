@@ -1,6 +1,7 @@
 <template>
     <div id="schedule">
         <h1><span class="text-primary">{{day[0].toUpperCase()}}</span>{{day.substr(1)}} <span class="text-primary">A</span>nime <span class="text-primary">S</span>chedule:</h1>
+        <h2 class="text-muted"><small>*Times are in (JST) timezone.</small></h2>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
                 <div class="card border-primary h-100">
@@ -117,7 +118,7 @@ export default {
     },
     computed: {
         getFormattedSchedule(){
-            const timeRegularExp = /.*(?=([0-1][0-9]|2[0-3]):[0-5][0-9] \(JST\)$)/g
+            const timeRegularExp = /.*(?=([0-1][0-9]|2[0-3]):[0-5][0-9] \(JST\)$)|\s\(JST\)$/g
             this.schedule.forEach((anime) => {
                 anime.show_time = anime.airing_start.replace(timeRegularExp, '')
             })
