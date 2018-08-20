@@ -14,12 +14,10 @@
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarAnimeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Anime
+              Top Anime
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarAnimeDropdown">
               <router-link v-for="(top, index) in topAnime" :key="index" class="dropdown-item" :to="`/top-anime/1/${top}`">Top {{top[0].toUpperCase()}}{{top.substr(1)}}</router-link>
-              <!-- TODO: Uncomment and use this devider when adding new sections -->
-              <!-- <div class="dropdown-divider"></div> -->
             </div>
           </li>
           <li class="nav-item active dropdown">
