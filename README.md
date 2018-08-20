@@ -11,6 +11,10 @@ Online database of information about Japanese Anime, made with Vue.js and Bootst
 * Uses Vue-Router for navigation.
 * "404 Page Not Found" page.
 
+## Upcoming
+
+* Ability to search anime.
+
 ## License
 
 The Anime Database is distributed under the [MIT License](https://github.com/AmeerTaweel/the-anime-database/blob/master/LICENSE).
