@@ -83,8 +83,11 @@ export default {
         },
         setParagraphHeight(){
             this.schedule.forEach((anime) => {
-                const imageHeight = document.getElementById(`${anime.mal_id}-image`).clientHeight
-                document.getElementById(`${anime.mal_id}-synopsis`).style.height = `${imageHeight}px`
+                let image = document.getElementById(`${anime.mal_id}-image`)
+                image.addEventListener('load', () => {
+                    let imageHeight = image.clientHeight
+                    document.getElementById(`${anime.mal_id}-synopsis`).style.height = `${imageHeight}px`
+                })
             })
         }
     },
