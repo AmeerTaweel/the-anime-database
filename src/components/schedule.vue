@@ -4,12 +4,13 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
                 <div class="card border-primary h-100">
-                    <div class="card-header text-primary">{{anime.title}}</div>
+                    <div class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</div>
                     <div class="row">
                         <p class="card-text col-12 text-center p-1 m-0">
                             <small>
                                 <span v-if="anime.producer[0]" class="text-primary">{{anime.producer[0].name}}</span>
-                                 | <span class="text-primary">{{anime.episodes}} eps</span>
+                                <span v-else class="text-primary">N/A</span>
+                                 | <span class="text-primary">{{anime.episodes || `0`}} eps</span>
                                  | <span class="text-primary">{{anime.source}}</span>
                             </small>
                         </p>
@@ -22,7 +23,9 @@
                             <img class="w-100 rounded-left" :src="anime.image_url"/>
                         </div>
                         <div class="col-6">
-                            <p>{{anime.synopsis}}</p>
+                            <div class="scrollable">
+                                <p>{{anime.synopsis}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,6 +77,9 @@ export default {
                     return null
                 }
             })
+        },
+        showAnimeDetails(animeID){
+            this.$router.push(`/anime/${animeID}`)
         }
     },
     computed: {
@@ -92,3 +98,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.scrollable{
+    height: 100px;
+    overflow-y: scroll;
+}
+</style>
