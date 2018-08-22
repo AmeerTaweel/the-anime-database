@@ -16,7 +16,7 @@
                             </small>
                         </p>
                         <div class="col-12">
-                            <div class="p-1 bg-primary text-center">
+                            <div class="p-1 bg-primary text-center badges-layout">
                                 <span class="badge badge-pill badge-light m-1" v-for="(genre, gIndex) in anime.genre" :key="gIndex">{{genre.name}}</span>
                             </div>
                         </div>    
@@ -158,5 +158,9 @@ export default {
 .scrollable{
     height: 100px;
     overflow-y: scroll;
+}
+.badges-layout{
+    white-space: nowrap;
+    overflow-x: scroll;
 }
 </style>
