@@ -11,6 +11,14 @@ export default {
         return {
             query: this.$route.params.query
         }
+    },
+    watch:{
+        '$route': `update`
+    },
+    methods: {
+        update(){
+            this.query = this.$route.params.query
+        }
     }
 }
 </script>
