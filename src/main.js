@@ -6,6 +6,7 @@ import Anime from './components/anime.vue'
 import PageNotFound from './components/pageNotFound.vue'
 import TopAnime from './components/topAnime.vue'
 import Schedule from './components/schedule.vue'
+import Search from './components/search.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,10 @@ const routes = [
   {
     path: `/schedule/:day`,
     component: Schedule
+  },
+  {
+    path: `/search/:query`,
+    component: Search
   },
   {
     path: `/404/page-not-found`,
