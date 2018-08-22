@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <h1 class="text-center m-4"><span class="text-primary">T</span>he <span class="text-primary">A</span>nime <span class="text-primary">D</span>atabase</h1>
     <h1 class="text-center"><small class="text-muted">All Your Anime Need At One Place!</small></h1>
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <router-link class="navbar-brand" to="/home">T.A.D.B.</router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,8 +30,8 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" v-model="search_query">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" @click="search">Search</button>
         </form>
       </div>
     </nav>
@@ -46,12 +46,18 @@ export default {
   data(){
     return {
       topAnime: [`airing`, `upcoming`, `movie`, `tv`, `special`, `ova`],
-      schedule: [`monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`]
+      schedule: [`monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`],
+      search_query: ``
     }
   },
   methods: {
     goHome(){
       this.$router.push('/home')
+    },
+    search(){
+      if(this.search_query != ``){
+        this.$router.push(`/search/${this.search_query}`)
+      }
     }
   },
   created(){

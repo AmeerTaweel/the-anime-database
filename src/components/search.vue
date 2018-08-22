@@ -9,7 +9,7 @@ export default {
     name: `search`,
     data(){
         return {
-            query: this.$route.params.search_query
+            query: this.$route.params.query
         }
     }
 }
