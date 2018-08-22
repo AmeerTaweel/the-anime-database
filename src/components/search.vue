@@ -5,10 +5,10 @@
         <div class="row m-2">
             <div class="col-12 py-2" v-for="(anime, index) in results" :key="index">
                 <div class="row rounded border border-primary py-2">
-                    <div class="col-2">
+                    <div class="col-4 col-sm-3 col-lg-2">
                         <img class="rounded border border-dark float-left" :src="anime.image_url"/>
                     </div>
-                    <div class="col-10">
+                    <div class="col-8 col-sm-9 col-lg-10">
                         <h4 class="text-primary pointer hover-link">{{anime.title}}</h4>
                         <h4 class="text-muted"><small>{{anime.type}} ({{anime.episodes || 0}} eps)</small></h4>
                         <h4 class="text-muted"><small>Score: {{anime.score || `N/A`}}</small></h4>
