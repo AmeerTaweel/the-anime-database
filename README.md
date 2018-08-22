@@ -4,10 +4,11 @@ Online database of information about Japanese Anime, made with Vue.js and Bootst
 
 ## Features
 
-* Clean, easy-to-use, and responsive design.
+* Clean, easy-to-use, modern and responsive design.
 * Lists of top airing animes, upcoming animes, movie animes, special animes, ova animes and best animes of all time.
 * All kinds of information about a selected anime.
 * Anime schedule for all week days.
+* Uses an up-to-date API.
 * Uses Vue-Router for navigation.
 * "404 Page Not Found" page.
 
