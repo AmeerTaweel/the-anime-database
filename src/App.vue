@@ -57,6 +57,7 @@ export default {
     search(){
       if(this.search_query != ``){
         this.$router.push(`/search/${this.search_query}`)
+        this.search_query = ``
       }
     }
   },
