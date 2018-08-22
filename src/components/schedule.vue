@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
                 <div class="card border-primary h-100">
-                    <div :id="`${anime.mal_id}-title`" class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)" :title="anime.title">{{anime.title[0]}}</div>
+                    <div :id="`${anime.mal_id}-title`" class="card-header text-primary pointer hover-link" @click="showAnimeDetails(anime.mal_id)" :title="anime.title">{{anime.title[0]}}</div>
                     <div class="row">
                         <p class="card-text col-12 text-center p-1 m-0">
                             <small>

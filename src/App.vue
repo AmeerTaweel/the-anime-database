@@ -74,6 +74,10 @@ hr {
 .pointer {
   cursor: pointer;
 }
+.hover-link:hover {
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+}
 .s-36px{
   width: 36px;
   height: 36px;

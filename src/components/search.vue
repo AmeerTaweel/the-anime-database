@@ -9,7 +9,7 @@
                         <img class="rounded border border-dark float-left" :src="anime.image_url"/>
                     </div>
                     <div class="col-10">
-                        <h4 class="text-primary">{{anime.title}}</h4>
+                        <h4 class="text-primary pointer hover-link">{{anime.title}}</h4>
                         <h4 class="text-muted"><small>{{anime.type}} ({{anime.episodes || 0}} eps)</small></h4>
                         <h4 class="text-muted"><small>Score: {{anime.score || `N/A`}}</small></h4>
                         <h4 class="text-muted"><small>Members: {{anime.members}}</small></h4>
