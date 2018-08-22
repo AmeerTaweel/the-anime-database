@@ -4,9 +4,9 @@
         <h2 class="text-muted"><small>*Times are in (JST) timezone.</small></h2>
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
-                <div :id="`${anime.mal_id}-card`" class="card border-primary h-100">
-                    <div :id="`${anime.mal_id}-title`" class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</div>
-                    <div :id="`${anime.mal_id}-content`" class="row">
+                <div class="card border-primary h-100">
+                    <div class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</div>
+                    <div class="row">
                         <p class="card-text col-12 text-center p-1 m-0">
                             <small>
                                 <span v-if="anime.producer[0]" class="text-primary">{{anime.producer[0].name}}</span>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div :id="`${anime.mal_id}-footer`" class="row card-footer text-center m-0">
+                            <div class="row card-footer text-center m-0">
                                 <span class="col-4">
                                     <svg class="s-24px rounded mx-auto d-block m-1" viewBox="0 0 24 24">
                                         <path fill="#000000" d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z" />
@@ -108,15 +108,9 @@ export default {
             this.schedule.forEach((anime) => {
                 let image = document.getElementById(`${anime.mal_id}-image`)
                 let synopsis = document.getElementById(`${anime.mal_id}-synopsis`)
-                let card = document.getElementById(`${anime.mal_id}-card`)
-                let title = document.getElementById(`${anime.mal_id}-title`)
-                let content = document.getElementById(`${anime.mal_id}-content`)
-                let footer = document.getElementById(`${anime.mal_id}-footer`)
                 let preventParagraphOverflow = () => {
                     let imageHeight = image.clientHeight
                     synopsis.style.height = `${imageHeight}px`
-                    let emptyHeight = card.offsetHeight - (title.offsetHeight + content.offsetHeight)
-                    footer.style.paddingTop = `${emptyHeight}px`
                 }
                 image.addEventListener('load', preventParagraphOverflow)
                 window.addEventListener(`resize`, preventParagraphOverflow)
