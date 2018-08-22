@@ -9,7 +9,7 @@
                         <img class="rounded border border-dark float-left" :src="anime.image_url"/>
                     </div>
                     <div class="col-8 col-sm-9 col-lg-10">
-                        <h4 class="text-primary pointer hover-link">{{anime.title}}</h4>
+                        <h4 class="text-primary pointer hover-link" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</h4>
                         <h4 class="text-muted"><small>{{anime.type}} ({{anime.episodes || 0}} eps)</small></h4>
                         <h4 class="text-muted"><small>Score: {{anime.score || `N/A`}}</small></h4>
                         <h4 class="text-muted"><small>Members: {{anime.members}}</small></h4>
@@ -57,6 +57,9 @@ export default {
         },
         checkQuery(){
             return true
+        },
+        showAnimeDetails(animeID){
+            this.$router.push(`/anime/${animeID}`)
         }
     },
     created(){
