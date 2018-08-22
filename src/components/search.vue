@@ -1,6 +1,12 @@
 <template>
     <div id="search">
-        {{query}}
+        <h1><span class="text-primary">S</span>earch <span class="text-primary">A</span>nime:</h1>
+        <h2 class="text-muted"><small>*Search Results for "{{query}}":</small></h2>
+        <div class="row my-2">
+            <div class="col-12" v-for="(anime, index) in results" :key="index">
+                {{anime.title}}
+            </div>
+        </div>
     </div>
 </template>
 
