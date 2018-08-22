@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 p-2" v-for="(anime, index) in getFormattedSchedule" :key="index">
                 <div class="card border-primary h-100">
-                    <div class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</div>
+                    <div :id="`${anime.mal_id}-title`" class="card-header text-primary pointer" @click="showAnimeDetails(anime.mal_id)" :title="anime.title">{{anime.title[0]}}</div>
                     <div class="row">
                         <p class="card-text col-12 text-center p-1 m-0">
                             <small>
@@ -104,16 +104,29 @@ export default {
         showAnimeDetails(animeID){
             this.$router.push(`/anime/${animeID}`)
         },
-        setParagraphHeight(){
+        fixLayout(){
             this.schedule.forEach((anime) => {
                 let image = document.getElementById(`${anime.mal_id}-image`)
                 let synopsis = document.getElementById(`${anime.mal_id}-synopsis`)
-                let preventParagraphOverflow = () => {
+                let title = document.getElementById(`${anime.mal_id}-title`)
+                let relayoutPage = () => {
                     let imageHeight = image.clientHeight
                     synopsis.style.height = `${imageHeight}px`
+                    // Wrap title in one line.
+                    const titleContent = anime.title
+                    const titleHeight = title.offsetHeight
+                    title.innerHTML = anime.title[0]
+                    for(let i = 1; i < titleContent.length; i++){
+                        const char = titleContent[i]
+                        title.innerHTML += char
+                        if(title.offsetHeight > titleHeight){
+                            title.innerHTML = title.innerHTML.substr(0, title.innerHTML.length - 4) + `...`
+                            break
+                        }
+                    }
                 }
-                image.addEventListener('load', preventParagraphOverflow)
-                window.addEventListener(`resize`, preventParagraphOverflow)
+                image.addEventListener('load', relayoutPage)
+                window.addEventListener(`resize`, relayoutPage)
             })
         },
     },
@@ -136,7 +149,7 @@ export default {
         }
     },
     updated(){
-        this.setParagraphHeight()
+        this.fixLayout()
     }
 }
 </script>
