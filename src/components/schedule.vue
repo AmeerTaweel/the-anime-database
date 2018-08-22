@@ -97,7 +97,6 @@ export default {
                     })
                 }else{
                     this.goTo404()
-                    return null
                 }
             })
         },
