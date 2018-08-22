@@ -2,9 +2,19 @@
     <div id="search">
         <h1><span class="text-primary">S</span>earch <span class="text-primary">A</span>nime:</h1>
         <h2 class="text-muted"><small>*Search Results for "{{query}}":</small></h2>
-        <div class="row my-2">
-            <div class="col-12" v-for="(anime, index) in results" :key="index">
-                {{anime.title}}
+        <div class="row m-2">
+            <div class="col-12 py-2" v-for="(anime, index) in results" :key="index">
+                <div class="row rounded border border-primary py-2">
+                    <div class="col-2">
+                        <img class="rounded border border-dark float-left" :src="anime.image_url"/>
+                    </div>
+                    <div class="col-10">
+                        <h4 class="text-primary">{{anime.title}}</h4>
+                        <h4 class="text-muted"><small>{{anime.type}} ({{anime.episodes || 0}} eps)</small></h4>
+                        <h4 class="text-muted"><small>Score: {{anime.score || `N/A`}}</small></h4>
+                        <h4 class="text-muted"><small>Members: {{anime.members}}</small></h4>
+                    </div>  
+                </div>
             </div>
         </div>
     </div>
