@@ -2,6 +2,10 @@
 
 Online database of information about Japanese Anime, made with Vue.js and Bootstrap.
 
+## Usage
+
+You can visit [The Anime Database Website](https://the-anime-database-ameertaweel.firebaseapp.com/ "The Anime Database Website").
+
 ## Features
 
 * Clean, easy-to-use, modern and responsive design.
