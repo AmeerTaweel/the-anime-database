@@ -29,9 +29,9 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" v-model="search_query">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" @click="search">Search</button>
+        <form class="form-inline my-2 my-lg-0" @submit.prevent="search">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" v-model="search_query">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
     </nav>
@@ -55,7 +55,7 @@ export default {
       this.$router.push('/home')
     },
     search(){
-      if(this.search_query != ``){
+      if(this.search_query !== ``){
         this.$router.push(`/search/${this.search_query}`)
         this.search_query = ``
       }

@@ -21,7 +21,7 @@
                             <td class="pointer" @click="showAnimeDetails(anime.mal_id)">
                                 <div class="row">
                                     <div class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2">
-                                        <img class="border border-dark rounded mx-auto d-block" :src="anime.image_url"/>
+                                        <img class="border border-dark rounded mx-auto d-block w-100 h-auto" :src="anime.image_url"/>
                                     </div>
                                     <div class="col-6 col-sm-7 col-md-8 col-lg-9 col-xl-10">
                                         <h4 class="align-top">{{anime.title}}</h4>

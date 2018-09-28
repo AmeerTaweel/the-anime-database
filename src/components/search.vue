@@ -6,7 +6,7 @@
             <div class="col-12 py-2" v-for="(anime, index) in results" :key="index">
                 <div class="row rounded border border-primary py-2">
                     <div class="col-4 col-sm-3 col-lg-2">
-                        <img class="rounded border border-dark float-left" :src="anime.image_url"/>
+                        <img class="rounded border border-dark float-left w-100 h-auto" :src="anime.image_url"/>
                     </div>
                     <div class="col-8 col-sm-9 col-lg-10">
                         <h4 class="text-primary pointer hover-link" @click="showAnimeDetails(anime.mal_id)">{{anime.title}}</h4>
