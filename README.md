@@ -4,7 +4,7 @@ Online database of information about Japanese Anime, made with Vue.js and Bootst
 
 ## Usage
 
-You can visit [The Anime Database Website](https://the-anime-database-ameertaweel.firebaseapp.com/ "The Anime Database Website").
+You can visit [The Anime Database Website](https://the-anime-database-ameertaweel.web.app/ "The Anime Database Website").
 
 ## Features
 
