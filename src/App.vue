@@ -1,7 +1,7 @@
 <template>
 	<v-app>
 		<v-toolbar class="noselect">
-			<v-toolbar-title>The Anime Database</v-toolbar-title>
+			<v-toolbar-title class="pointer" @click="navigate(`home`)">The Anime Database</v-toolbar-title>
 			<v-spacer></v-spacer>
 
 			<v-toolbar-items>
@@ -39,19 +39,14 @@
 		</v-toolbar>
 
 		<v-content>
-			<HelloWorld/>
+			<router-view/>
 		</v-content>
 	</v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
 	name: `App`,
-	components: {
-		HelloWorld,
-	},
 	data: () => ({
 		topAnime: [
 			{ title: `Top Airing` },
@@ -73,8 +68,8 @@ export default {
 		scheduleMenuState: false
 	}),
 	methods: {
-		log() {
-			console.log("Log")
+		navigate(routeName) {
+			this.$router.push({ name: routeName })
 		}
 	}
 }
@@ -88,4 +83,7 @@ export default {
 	-moz-user-select: none
 	-ms-user-select: none
 	user-select: none
+
+.pointer
+	cursor: pointer
 </style>
