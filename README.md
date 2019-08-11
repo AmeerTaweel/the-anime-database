@@ -15,7 +15,6 @@ You can visit [The Anime Database Website](https://the-anime-database-ameertawee
 * Anime schedule for all week days.
 * Uses an up-to-date API.
 * Uses Vue-Router for navigation.
-* "404 Page Not Found" page.
 
 ## Upcoming
 
