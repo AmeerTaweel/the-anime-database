@@ -13,7 +13,7 @@
 								<v-fade-transition>
 									<v-overlay class="text-center" v-if="hover" absolute :opacity="0.75" color="white" light>
 										<v-card-title class="black--text">{{anime.title}}</v-card-title>
-										<v-btn>More Info</v-btn>
+										<v-btn @click="viewMoreAnimeInfo(anime.mal_id)">More Info</v-btn>
 									</v-overlay>
 								</v-fade-transition>
 							</v-card>
@@ -63,6 +63,9 @@ export default {
 			if(card){
 				card.style.height = `${card.offsetWidth / (225 / 318)}px`
 			}
+		},
+		viewMoreAnimeInfo(id) {
+			this.$router.push({ name: `anime`, params: { id } })
 		}
 	},
 	created() {
