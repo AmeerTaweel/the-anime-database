@@ -10,6 +10,12 @@
 								<lazy-component class="fill" @show="forceAspectRatio(`${i}/${j}`)">
 									<img class="fill" :src="anime.image_url">
 								</lazy-component>
+								<v-fade-transition>
+									<v-overlay class="text-center" v-if="hover" absolute :opacity="0.75" color="white" light>
+										<v-card-title class="black--text">{{anime.title}}</v-card-title>
+										<v-btn>More Info</v-btn>
+									</v-overlay>
+								</v-fade-transition>
 							</v-card>
 						</v-hover>
 					</v-flex>
