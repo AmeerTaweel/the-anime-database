@@ -65,7 +65,7 @@ export default {
 			}
 		},
 		viewMoreAnimeInfo(id) {
-			this.$router.push({ name: `anime`, params: { id } })
+			this.$router.push({ name: `anime`, params: { id: `${id}` } })
 		}
 	},
 	created() {
