@@ -13,7 +13,7 @@
 						</v-btn>
 					</template>
 					<v-list>
-						<v-list-item v-for="(item, index) in topAnime" :key="index" @click="log">
+						<v-list-item v-for="(item, index) in topAnime" :key="index" @click="navigate(`home`)">
 							<v-list-item-title>{{ item.title }}</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -26,7 +26,7 @@
 						</v-btn>
 					</template>
 					<v-list>
-						<v-list-item v-for="(item, index) in schedule" :key="index" @click="log">
+						<v-list-item v-for="(item, index) in schedule" :key="index" @click="navigate(`home`)">
 							<v-list-item-title>{{ item.title }}</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -69,7 +69,9 @@ export default {
 	}),
 	methods: {
 		navigate(routeName) {
-			this.$router.push({ name: routeName })
+			if(this.$router.currentRoute.name !== routeName){
+				this.$router.push({ name: routeName })
+			}
 		}
 	}
 }
