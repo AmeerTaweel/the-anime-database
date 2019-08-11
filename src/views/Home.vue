@@ -4,7 +4,7 @@
 			<h1 class="display-3 ma-4">Top {{animeType.display}} Animes</h1>
 			<v-container v-bind="{ [`grid-list-lg`]: true }" fluid>
 				<v-layout wrap>
-					<v-flex v-for="(anime, j) in animeType.animes" :key="j" xs6 sm4 lg2>
+					<v-flex v-for="(anime, j) in animeType.animes" :key="j" xs6 sm4 md3 lg2>
 						<v-hover v-slot:default="{ hover }">
 							<v-card :id="`${i}/${j}`" :elevation="hover ? 12 : 2" class="mx-auto" height="100%" width="100%">
 								<lazy-component class="fill" @show="forceAspectRatio(`${i}/${j}`)">
@@ -54,12 +54,25 @@ export default {
 		},
 		forceAspectRatio(id){
 			const card = document.getElementById(id)
-			card.style.height = `${card.offsetWidth / (225 / 318)}px`
+			if(card){
+				card.style.height = `${card.offsetWidth / (225 / 318)}px`
+			}
 		}
 	},
 	created() {
 		Object.keys(this.animeTypes).forEach(animeType => {
 			this.fetchTopAnimesByType(animeType)
+		})
+	},
+	mounted() {
+		this.$nextTick(() => {
+			window.addEventListener(`resize`, () => {
+				Object.keys(this.animeTypes).forEach((key) => {
+					this.animeTypes[key].animes.forEach((anime, j) => {
+						this.forceAspectRatio(`${key}/${j}`)
+					})
+				})
+			})
 		})
 	}
 }
