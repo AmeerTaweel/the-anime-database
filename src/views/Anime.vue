@@ -1,5 +1,5 @@
 <template>
-	<v-container v-bind="{ [`grid-list-lg`]: true }" fluid>	
+	<v-container v-if="!isNotFound" v-bind="{ [`grid-list-lg`]: true }" fluid>	
 		<h1 class="display-3 ma-4">{{anime.title}}</h1>
 		<v-layout class="ma-4 text-justify" wrap>
 			<v-flex xs12 md4>
@@ -126,6 +126,7 @@
 			</v-flex>
 		</v-layout>
 	</v-container>
+	<h1 v-else class="display-3 ma-4">Error 404: Anime Not Found</h1>
 </template>
 <script>
 export default {
@@ -142,7 +143,7 @@ export default {
 			fetch(`https://api.jikan.moe/anime/${this.id}`, {
 				method: `GET`
 			}).then((response) => {
-				if(response.status === 200){
+				if(response.ok){
 					return response.json().then(jsonResponse => {
 						this.anime = jsonResponse
 					})
