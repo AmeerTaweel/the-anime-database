@@ -48,7 +48,7 @@
 							Prev
 						</v-btn>
 						<v-chip light active color="yellow">{{intPage}}</v-chip>
-						<v-btn class="ml-2" light color="yellow" rounded @click="next">
+						<v-btn class="ml-2" light color="yellow" rounded :disabled="topAnimes.length < 50" @click="next">
 							Next
 							<v-icon right>mdi-arrow-right</v-icon>
 						</v-btn>
