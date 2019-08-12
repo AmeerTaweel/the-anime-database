@@ -34,6 +34,17 @@ export default new Router({
 			props: true
 		},
 		{
+			path: `/search/:pQuery`,
+			name: `searchQ`,
+			component: () => import(/* webpackChunkName: "search" */ './views/Search.vue'),
+			props: true
+		},
+		{
+			path: `/search`,
+			name: `search`,
+			component: () => import(/* webpackChunkName: "search" */ './views/Search.vue')
+		},
+		{
 			path: `*`,
 			redirect: `/`
 		}

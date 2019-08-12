@@ -151,10 +151,6 @@ $yellow: #FFEB3B
 .link:hover
 	text-decoration: underline
 	color: $yellow
-.clamp-one-line
-	text-overflow: ellipsis
-	white-space: nowrap
-	overflow: hidden
 .vertically-scrollable
 	overflow-y: scroll
 .horizantally-scrollable

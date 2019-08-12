@@ -36,7 +36,7 @@
 						</v-list-item>
 					</v-list>
 				</v-menu>
-				<v-btn text>
+				<v-btn text @click="search">
 					Search
 					<v-icon right>mdi-magnify</v-icon>
 				</v-btn>
@@ -91,6 +91,11 @@ export default {
 			if(this.$router.currentRoute.path !== to){
 				this.$router.push(to)
 			}
+		},
+		search() {
+			if(this.$router.currentRoute.name !== `search`){
+				this.$router.push({ name: `search` })
+			}
 		}
 	}
 }
@@ -111,4 +116,9 @@ export default {
 .fill
 	width: 100%
 	height: 100%
+
+.clamp-one-line
+	text-overflow: ellipsis
+	white-space: nowrap
+	overflow: hidden
 </style>
