@@ -16,10 +16,6 @@ You can visit [The Anime Database Website](https://the-anime-database-ameertawee
 * Uses an up-to-date API.
 * Uses Vue-Router for navigation.
 
-## Upcoming
-
-* Ability to filter anime search.
-
 ## License
 
 The Anime Database is distributed under the [MIT License](https://github.com/AmeerTaweel/the-anime-database/blob/master/LICENSE).
