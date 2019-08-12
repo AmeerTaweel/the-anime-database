@@ -21,6 +21,9 @@
 					</v-flex>
 				</v-layout>
 			</v-container>
+			<v-btn class="ma-4" light color="yellow" @click="top(i)">
+				View More
+			</v-btn>
 		</div>
 	</div>
 </template>
@@ -86,6 +89,9 @@ export default {
 		},
 		viewMoreAnimeInfo(id) {
 			this.$router.push({ name: `anime`, params: { id: `${id}` } })
+		},
+		top(animeType) {
+			this.$router.push(`/top/${animeType}/1`)
 		}
 	},
 	created() {
