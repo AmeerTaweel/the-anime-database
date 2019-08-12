@@ -89,4 +89,8 @@ export default {
 
 .pointer
 	cursor: pointer
+
+.fill
+	width: 100%
+	height: 100%
 </style>

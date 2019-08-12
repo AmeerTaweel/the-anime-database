@@ -22,6 +22,12 @@ export default new Router({
 			props: true
 		},
 		{
+			path: `/top/:type/:page`,
+			name: `top`,
+			component: () => import(/* webpackChunkName: "top" */ './views/Top.vue'),
+			props: true
+		},
+		{
 			path: `*`,
 			redirect: `/`
 		}
