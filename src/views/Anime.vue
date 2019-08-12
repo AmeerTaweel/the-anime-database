@@ -1,5 +1,5 @@
 <template>
-	<v-container v-if="!isNotFound" v-bind="{ [`grid-list-lg`]: true }" fluid>	
+	<v-container v-if="!isNotFound && !error" v-bind="{ [`grid-list-lg`]: true }" fluid>	
 		<h1 class="display-3 ma-4">{{anime.title}}</h1>
 		<v-layout class="ma-4 text-justify" wrap>
 			<v-flex xs12 md4>
@@ -126,13 +126,27 @@
 			</v-flex>
 		</v-layout>
 	</v-container>
-	<h1 v-else class="display-3 ma-4">Error 404: Anime Not Found</h1>
+	<v-container v-else-if="isNotFound" fluid>
+		<h1 class="display-3 ma-4 red--text">Error 404: Anime Not Found</h1>
+		<v-btn class="ma-4" color="red" @click="home">
+			Go To Home Page
+			<v-icon right>mdi-home</v-icon>
+		</v-btn>
+	</v-container>
+	<v-container v-else fluid>
+		<h1 class="display-3 ma-4 red--text">An Unknown Error Occurred</h1>
+		<v-btn class="ma-4" color="red" @click="home">
+			Go To Home Page
+			<v-icon right>mdi-home</v-icon>
+		</v-btn>
+	</v-container>
 </template>
 <script>
 export default {
 	data: () => ({
 		anime: {},
 		isNotFound: false,
+		error: false,
 		na: `N/A`
 	}),
 	props: {
@@ -147,10 +161,15 @@ export default {
 					return response.json().then(jsonResponse => {
 						this.anime = jsonResponse
 					})
-				}else{
+				} else if(response.status === 404) {
 					this.isNotFound = true
+				} else {
+					this.error = true
 				}
 			})
+		},
+		home() {
+			this.$router.push({ name: `home` })
 		}
 	},
 	created() {
