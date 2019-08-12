@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-for="(animeType, i) in animeTypes" :key="i">
-			<h1 class="display-3 ma-4">Top {{animeType.display}} Animes</h1>
+			<h1 class="display-3 ma-4">Top {{animeType.display}}</h1>
 			<v-container v-bind="{ [`grid-list-lg`]: true }" fluid>
 				<v-layout wrap>
 					<v-flex v-for="(anime, j) in animeType.animes" :key="j" xs6 sm4 md3 lg2>
@@ -32,30 +32,50 @@ export default {
 		animeTypes: {
 			airing: {
 				animes: [],
-				display: `Airing`,
+				display: `Airing Anime`,
 				type: `airing`
 			}, 
 			upcoming: {
 				animes: [],
-				display: `Upcoming`,
+				display: `Upcoming Anime`,
 				type: `upcoming`
+			},
+			series: {
+				animes: [],
+				display: `Anime Series`,
+				type: ``
 			},
 			movie: {
 				animes: [],
-				display: `Movie`,
+				display: `Anime Movies`,
 				type: `movie`
+			},
+			tv: {
+				animes: [],
+				display: `Anime TV Series`,
+				type: `tv`
+			},
+			special: {
+				animes: [],
+				display: `Anime Specials`,
+				type: `special`
+			},
+			ova: {
+				animes: [],
+				display: `Anime OVA Series`,
+				type: `ova`
 			}
 		}
 	}),
 	methods: {
-		fetchTopAnimesByType(animeType) {
+		fetchTopAnimesByType(key, animeType) {
 			// Just get the first page
 			fetch(`https://api.jikan.moe/top/anime/1/${animeType}`, {
                 method: `GET`
             }).then(response => {
                 return response.json()
             }).then(jsonResponse => {
-				this.animeTypes[animeType].animes = jsonResponse.top.slice(0, 24)
+				this.animeTypes[key].animes = jsonResponse.top.slice(0, 12)
 			})
 		},
 		forceAspectRatio(id){
@@ -69,8 +89,8 @@ export default {
 		}
 	},
 	created() {
-		Object.keys(this.animeTypes).forEach(animeType => {
-			this.fetchTopAnimesByType(animeType)
+		Object.keys(this.animeTypes).forEach(key => {
+			this.fetchTopAnimesByType(key, this.animeTypes[key].type)
 		})
 	},
 	mounted() {
