@@ -1,7 +1,7 @@
 <template>
 	<v-app>
 		<v-app-bar class="noselect" app>
-			<v-toolbar-title class="pointer" @click="navigate(`home`)">The Anime Database</v-toolbar-title>
+			<v-toolbar-title class="pointer" @click="home">The Anime Database</v-toolbar-title>
 			<v-spacer></v-spacer>
 
 			<v-toolbar-items>
@@ -13,7 +13,7 @@
 						</v-btn>
 					</template>
 					<v-list>
-						<v-list-item v-for="(item, index) in topAnime" :key="index" @click="navigate(`home`)">
+						<v-list-item v-for="(item, index) in topAnime" :key="index" @click="top(item.type)">
 							<v-list-item-title>{{ item.title }}</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -26,7 +26,7 @@
 						</v-btn>
 					</template>
 					<v-list>
-						<v-list-item v-for="(item, index) in schedule" :key="index" @click="navigate(`home`)">
+						<v-list-item v-for="(item, index) in schedule" :key="index" @click="home">
 							<v-list-item-title>{{ item.title }}</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -49,13 +49,13 @@ export default {
 	name: `App`,
 	data: () => ({
 		topAnime: [
-			{ title: `Top Anime Series` },
-			{ title: `Top Airing` },
-			{ title: `Top Upcoming` },
-			{ title: `Top Movies` },
-			{ title: `Top TV` },
-			{ title: `Top Specials` },
-			{ title: `Top OVAs` }
+			{ title: `Top Anime Series`, type: `series` },
+			{ title: `Top Airing`, type: `airing` },
+			{ title: `Top Upcoming`, type: `upcoming` },
+			{ title: `Top Movies`, type: `movie` },
+			{ title: `Top TV`, type: `tv` },
+			{ title: `Top Specials`, type: `special` },
+			{ title: `Top OVAs`, type: `ova` }
 		],
 		topAnimeMenuState: false,
 		schedule: [
@@ -69,9 +69,15 @@ export default {
 		scheduleMenuState: false
 	}),
 	methods: {
-		navigate(routeName) {
-			if(this.$router.currentRoute.name !== routeName){
-				this.$router.push({ name: routeName })
+		home() {
+			if(this.$router.currentRoute.name !== `home`){
+				this.$router.push({ name: `home` })
+			}
+		},
+		top(animeType) {
+			const to = `/top/${animeType}/1`
+			if(this.$router.currentRoute.path !== to){
+				this.$router.push(to)
 			}
 		}
 	}
