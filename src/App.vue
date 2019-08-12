@@ -31,7 +31,7 @@
 						</v-btn>
 					</template>
 					<v-list>
-						<v-list-item v-for="(item, index) in schedule" :key="index" @click="home">
+						<v-list-item v-for="(item, index) in schedule" :key="index" @click="sched(item.key)">
 							<v-list-item-title>{{ item.title }}</v-list-item-title>
 						</v-list-item>
 					</v-list>
@@ -64,13 +64,13 @@ export default {
 		],
 		topAnimeMenuState: false,
 		schedule: [
-			{ title: `Monday` },
-			{ title: `Tuesday` },
-			{ title: `Wednesday` },
-			{ title: `Thursday` },
-			{ title: `Friday` },
-			{ title: `Saturday` },
-			{ title: `Sunday` }
+			{ title: `Monday`, key: `monday` },
+			{ title: `Tuesday`, key: `tuesday` },
+			{ title: `Wednesday`, key: `wednesday` },
+			{ title: `Thursday`, key: `thursday` },
+			{ title: `Friday`, key: `friday` },
+			{ title: `Saturday`, key: `saturday` },
+			{ title: `Sunday`, key: `sunday` }
 		],
 		scheduleMenuState: false
 	}),
@@ -82,6 +82,12 @@ export default {
 		},
 		top(animeType) {
 			const to = `/top/${animeType}/1`
+			if(this.$router.currentRoute.path !== to){
+				this.$router.push(to)
+			}
+		},
+		sched(day) {
+			const to = `/schedule/${day}`
 			if(this.$router.currentRoute.path !== to){
 				this.$router.push(to)
 			}

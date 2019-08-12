@@ -28,6 +28,12 @@ export default new Router({
 			props: true
 		},
 		{
+			path: `/schedule/:day`,
+			name: `schedule`,
+			component: () => import(/* webpackChunkName: "schedule" */ './views/Schedule.vue'),
+			props: true
+		},
+		{
 			path: `*`,
 			redirect: `/`
 		}
