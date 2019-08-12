@@ -44,23 +44,12 @@
 				</v-flex>
 			</v-layout>
 		</v-container>
-		<v-container fluid v-else-if="isNotFound">
-			<h1 class="display-3 ma-4 red--text">Error 404: Page Not Found</h1>
-			<v-btn class="ma-4" color="red" @click="home">
-				Go To Home Page
-				<v-icon right>mdi-home</v-icon>
-			</v-btn>
-		</v-container>
-		<v-container fluid v-else>
-			<h1 class="display-3 ma-4 red--text">An Unknown Error Occurred</h1>
-			<v-btn class="ma-4" color="red" @click="home">
-				Go To Home Page
-				<v-icon right>mdi-home</v-icon>
-			</v-btn>
-		</v-container>
+		<problem v-else-if="isNotFound" msg="Error 404: Anime Not Found"/>
+		<problem v-else msg="An Unknown Error Occurred"/>
 	</v-container>
 </template>
 <script>
+import Problem from '../components/Problem'
 export default {
 	data: () => ({
 		animes: [],
@@ -131,9 +120,6 @@ export default {
 				synopsis.style.height = `${h}px`
 			}
 		},
-		home() {
-			this.$router.push({ name: `home` })
-		},
 		moreInfo(id) {
 			this.$router.push({ name: `anime`, params: { id: `${id}` } })
 		},
@@ -153,6 +139,9 @@ export default {
 				}
 			})
 		})
+	},
+	components: {
+		Problem
 	}
 }
 </script>
