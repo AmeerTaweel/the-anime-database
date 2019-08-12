@@ -1,5 +1,5 @@
 <template>
-	<v-container v-bind="{ [`grid-list-md`]: true }" fluid>	
+	<v-container v-bind="{ [`grid-list-lg`]: true }" fluid>	
 		<h1 class="display-3 ma-4">{{anime.title}}</h1>
 		<v-layout class="ma-4 text-justify" wrap>
 			<v-flex xs12 md4>
