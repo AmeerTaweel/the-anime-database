@@ -5,7 +5,7 @@
 			<v-layout class="ma-4" row wrap>
 				<v-flex v-for="(anime, i) in animes" :key="i" xs12 sm6 md4>
 					<v-card class="mx-auto" raised width="100%" height="100%">
-						<h5 class="pa-4 headline clamp-one-line">{{anime.title}}</h5>
+						<h5 class="pa-4 headline clamp-one-line pointer link" @click="moreInfo(anime.mal_id)">{{anime.title}}</h5>
 						<div class="px-4 py-2 text-center yellow  black--text">
 							<span>{{anime.producer[0] ? anime.producer[0].name : `N/A`}}</span>
 							| <span>{{anime.episodes || `0`}} eps</span>
@@ -158,6 +158,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+$yellow: #FFEB3B
+.link:hover
+	text-decoration: underline
+	color: $yellow
 .clamp-one-line
 	text-overflow: ellipsis
 	white-space: nowrap
