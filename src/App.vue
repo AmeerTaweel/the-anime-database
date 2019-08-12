@@ -1,6 +1,6 @@
 <template>
 	<v-app>
-		<v-toolbar class="noselect">
+		<v-app-bar class="noselect" app>
 			<v-toolbar-title class="pointer" @click="navigate(`home`)">The Anime Database</v-toolbar-title>
 			<v-spacer></v-spacer>
 
@@ -36,7 +36,7 @@
 					<v-icon right>mdi-magnify</v-icon>
 				</v-btn>
 			</v-toolbar-items>
-		</v-toolbar>
+		</v-app-bar>
 
 		<v-content>
 			<router-view/>
@@ -49,12 +49,13 @@ export default {
 	name: `App`,
 	data: () => ({
 		topAnime: [
+			{ title: `Top Anime Series` },
 			{ title: `Top Airing` },
 			{ title: `Top Upcoming` },
-			{ title: `Top Movie` },
+			{ title: `Top Movies` },
 			{ title: `Top TV` },
-			{ title: `Top Special` },
-			{ title: `Top OVA` }
+			{ title: `Top Specials` },
+			{ title: `Top OVAs` }
 		],
 		topAnimeMenuState: false,
 		schedule: [
