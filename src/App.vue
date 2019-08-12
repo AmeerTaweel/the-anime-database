@@ -2,9 +2,14 @@
 	<v-app>
 		<v-app-bar class="noselect" app>
 			<v-toolbar-title class="pointer" @click="home">The Anime Database</v-toolbar-title>
+
 			<v-spacer></v-spacer>
 
 			<v-toolbar-items>
+				<v-btn text @click="home">
+					Home
+					<v-icon right>mdi-home</v-icon>
+				</v-btn>
 				<v-menu v-model="topAnimeMenuState" open-on-hover close-on-click close-on-content-click offset-y light>
 					<template v-slot:activator="{ on }">
 						<v-btn text v-on="on">
@@ -62,9 +67,10 @@ export default {
 			{ title: `Monday` },
 			{ title: `Tuesday` },
 			{ title: `Wednesday` },
-			{ title: `Top TV` },
-			{ title: `Top Special` },
-			{ title: `Top OVA` }
+			{ title: `Thursday` },
+			{ title: `Friday` },
+			{ title: `Saturday` },
+			{ title: `Sunday` }
 		],
 		scheduleMenuState: false
 	}),
