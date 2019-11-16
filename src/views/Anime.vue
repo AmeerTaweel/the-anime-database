@@ -29,7 +29,7 @@
 							<strong>Status</strong>: {{anime.status || na}}
 						</h5>
 						<h5 class="headline my-2">
-							<strong>Aired</strong>: {{anime.aired_string || na}}
+							<strong>Aired</strong>: {{anime.aired.from ? formatDate(anime.aired.from) : na}} to {{anime.aired.to ? formatDate(anime.aired.to) : na}}
 						</h5>
 						<h5 class="headline my-2">
 							<strong>Premiered</strong>: {{anime.premiered || na}}
@@ -39,23 +39,23 @@
 						</h5>
 						<h5 class="headline my-2">
 							<strong>Producers</strong>:
-							<span v-if="!anime.producer || !anime.producer.length">{{na}}</span>
+							<span v-if="!anime.producers || !anime.producers.length">{{na}}</span>
 							<div v-else>
-								<span v-for="(producer, index) in anime.producer" :key="index">{{producer.name}}<span v-if="anime.producer.length > index + 1">, </span></span>
+								<span v-for="(producer, index) in anime.producers" :key="index">{{producer.name}}<span v-if="anime.producers.length > index + 1">, </span></span>
 							</div>
 						</h5>
 						<h5 class="headline my-2">
 							<strong>Licensors</strong>:
-							<span v-if="!anime.licensor || !anime.licensor.length">{{na}}</span>
+							<span v-if="!anime.licensors || !anime.licensors.length">{{na}}</span>
 							<div v-else>
-								<span v-for="(licensor, index) in anime.licensor" :key="index">{{licensor.name}}<span v-if="anime.licensor.length > index + 1">, </span></span>
+								<span v-for="(licensor, index) in anime.licensors" :key="index">{{licensor.name}}<span v-if="anime.licensors.length > index + 1">, </span></span>
 							</div>
 						</h5>
 						<h5 class="headline my-2">
 							<strong>Studios</strong>:
-							<span v-if="!anime.studio || !anime.studio.length">{{na}}</span>
+							<span v-if="!anime.studios || !anime.studios.length">{{na}}</span>
 							<div v-else>
-								<span v-for="(studio, index) in anime.studio" :key="index">{{studio.name}}<span v-if="anime.studio.length > index + 1">, </span></span>
+								<span v-for="(studio, index) in anime.studios" :key="index">{{studio.name}}<span v-if="anime.studios.length > index + 1">, </span></span>
 							</div>
 						</h5>
 						<h5 class="headline my-2">
@@ -63,9 +63,9 @@
 						</h5>
 						<h5 class="headline my-2">
 							<strong>Genres</strong>:
-							<span v-if="!anime.genre || !anime.genre.length">{{na}}</span>
+							<span v-if="!anime.genres || !anime.genres.length">{{na}}</span>
 							<div v-else>
-								<span v-for="(genre, index) in anime.genre" :key="index">{{genre.name}}<span v-if="anime.genre.length > index + 1">, </span></span>
+								<span v-for="(genre, index) in anime.genres" :key="index">{{genre.name}}<span v-if="anime.genres.length > index + 1">, </span></span>
 							</div>
 						</h5>
 						<h5 class="headline my-2">
@@ -101,10 +101,10 @@
 						<div v-if="anime.related">
 							<h4 class="display-1 my-5">Related:</h4>
 							<h5 class="headline my-2" v-if="anime.related.Adaptation && anime.related.Adaptation.length">
-								<strong>Adaptation</strong>: <span v-for="(adaptation, index) in anime.related.Adaptation" :key="index">{{adaptation.title}}<span v-if="anime.related.Adaptation.length > index + 1">, </span></span>
+								<strong>Adaptation</strong>: <span v-for="(adaptation, index) in anime.related.Adaptation" :key="index">{{adaptation.name}}<span v-if="anime.related.Adaptation.length > index + 1">, </span></span>
 							</h5>
 							<h5 class="headline my-2" v-if="anime.related[`Side story`] && anime.related[`Side story`].length">
-								<strong>Side Story</strong>: <span v-for="(sideStory, index) in anime.related[`Side story`]" :key="index">{{sideStory.title}}<span v-if="anime.related[`Side story`].length > index + 1">, </span></span>
+								<strong>Side Story</strong>: <span v-for="(sideStory, index) in anime.related[`Side story`]" :key="index">{{sideStory.name}}<span v-if="anime.related[`Side story`].length > index + 1">, </span></span>
 							</h5>
 							<h5 class="headline my-2" v-if="anime.related.Summary && anime.related.Summary.length">
 								<strong>Summary</strong>: <span v-for="(summary, index) in anime.related.Summary" :key="index">{{summary.title}}<span v-if="anime.related.Summary.length > index + 1">, </span></span>
@@ -156,6 +156,16 @@ export default {
 					this.error = true
 				}
 			})
+		},
+		formatDate(dateText){
+			const date = new Date(dateText)
+			const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
+			const day = date.getDate()
+			const month = monthNames[date.getMonth()]
+			const year = date.getFullYear()
+
+			return `${day} ${month.substr(0, 3)}, ${year}`
 		}
 	},
 	created() {

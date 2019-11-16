@@ -26,7 +26,7 @@
 									<v-layout class="mx-4" column>
 										<h4 class="display-1 yellow--text">{{anime.title}}</h4>
 										<h5 class="headline">{{anime.type}} ({{anime.episodes}} eps)</h5>
-										<h5 class="headline">{{anime.airing_start || `?`}} - {{anime.airing_end || `?`}}</h5>
+										<h5 class="headline">{{anime.start_date || `?`}} - {{anime.end_date || `?`}}</h5>
 										<h5 class="headline">{{anime.members}} members</h5>
 									</v-layout>
 								</v-flex>
