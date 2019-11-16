@@ -73,7 +73,7 @@ export default {
 	methods: {
 		fetchTopAnimesByType(key, animeType) {
 			// Just get the first page
-			fetch(`https://api.jikan.moe/top/anime/1/${animeType}`, {
+			fetch(`https://api.jikan.moe/v3/top/anime/1${animeType ? `/` : ``}${animeType}`, {
                 method: `GET`
             }).then(response => {
                 return response.json()

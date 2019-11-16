@@ -80,14 +80,14 @@ export default {
 				this.animes = []
 				this.isLoading = true
 				this.resultsFor = this.query
-				fetch(`https://api.jikan.moe/search/anime?q=${this.query}&page=1`, {
+				fetch(`https://api.jikan.moe/v3/search/anime?q=${this.query}&page=1`, {
 					method: `GET`
 				}).then((response) => {
 					if(cQuery === this.query){
 						this.isLoading = false
 						if(response.ok){
 							return response.json().then(jsonResponse => {
-								this.animes = jsonResponse.result
+								this.animes = jsonResponse.results
 							})
 						} else {
 							this.error = true

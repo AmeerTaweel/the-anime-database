@@ -7,12 +7,12 @@
 					<v-card class="mx-auto" raised width="100%" height="100%">
 						<h5 class="pa-4 headline clamp-one-line pointer link" @click="moreInfo(anime.mal_id)">{{anime.title}}</h5>
 						<div class="px-4 py-2 text-center yellow  black--text">
-							<span>{{anime.producer[0] ? anime.producer[0].name : `N/A`}}</span>
+							<span>{{anime.producers[0] ? anime.producers[0].name : `N/A`}}</span>
 							| <span>{{anime.episodes || `0`}} eps</span>
 							| <span>{{anime.source}}</span>
 						</div>
 						<div class="text-center px-3 py-1 horizantally-scrollable">
-                            <v-chip class="mx-1 my-1" color="yellow" light v-for="(genre, j) in anime.genre" :key="j">{{genre.name}}</v-chip>
+                            <v-chip class="mx-1 my-1" color="yellow" light v-for="(genre, j) in anime.genres" :key="j">{{genre.name}}</v-chip>
                         </div>
 						<v-layout row>
 							<v-flex xs6>
@@ -96,7 +96,7 @@ export default {
 			if(!this.days[this.day]){
 				this.isNotFound = true
 			} else {
-				fetch(`https://api.jikan.moe/schedule/${this.day}`, {
+				fetch(`https://api.jikan.moe/v3/schedule/${this.day}`, {
 					method: `GET`
 				}).then((response) => {
 					if(response.ok){

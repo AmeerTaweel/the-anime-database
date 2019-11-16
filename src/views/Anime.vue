@@ -143,7 +143,7 @@ export default {
 	},
 	methods: {
 		getAnimeData(){
-			fetch(`https://api.jikan.moe/anime/${this.id}`, {
+			fetch(`https://api.jikan.moe/v3/anime/${this.id}`, {
 				method: `GET`
 			}).then((response) => {
 				if(response.ok){

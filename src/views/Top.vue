@@ -119,7 +119,7 @@ export default {
 			if(!this.animeTypes[this.type] || this.intPage < 1){
 				this.isNotFound = true
 			} else {
-				fetch(`https://api.jikan.moe/top/anime/${this.intPage}/${this.animeTypes[this.type].type}`, {
+				fetch(`https://api.jikan.moe/v3/top/anime/${this.intPage}${this.animeTypes[this.type].type ? `/` : ``}${this.animeTypes[this.type].type}`, {
 					method: `GET`
 				}).then((response) => {
 					if(response.ok){
